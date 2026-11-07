@@ -301,6 +301,66 @@ mark{background:var(--brass-soft);color:inherit;border-radius:3px;padding:0 2px}
   .note{padding:14px}
 }
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* game */
+.gm{display:flex;flex-direction:column;gap:14px}
+.spr{width:96px;height:auto;image-rendering:pixelated;display:block}
+.spr.sbig{width:120px}
+.gm-hero-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.gm-weeks{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.gm-wk{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font:inherit}
+.gm-wk:hover:not(.off){border-color:var(--blue)}
+.gm-wk small{color:var(--muted);font-size:.8rem}
+.gm-wk.off{opacity:.55;cursor:default}
+.gm-mix{cursor:default}.gm-mix .row{margin-top:6px}
+.spr.sbig{width:120px}
+.gm-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.hp{position:relative;width:160px;max-width:100%;height:18px;border-radius:6px;background:var(--sunk);border:1px solid var(--line);overflow:hidden}
+.hp i{position:absolute;inset:0 auto 0 0;background:var(--good);transition:width .4s}
+.hp.foe i{background:var(--bad)}
+.hp span{position:relative;display:block;text-align:center;font:600 .72rem/18px var(--f-mono);color:var(--ink)}
+.gm-map{display:flex;flex-direction:column;gap:8px}
+.gm-node{display:flex;gap:14px;align-items:center;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.gm-node .spr{width:56px}
+.gm-node div{display:flex;flex-direction:column;gap:2px}
+.gm-node small{font-size:.82rem}
+.gm-node.now{border-color:var(--brass);box-shadow:0 0 0 2px var(--brass-soft)}
+.gm-node.done{opacity:.6}
+.gm-node.lock .spr{filter:grayscale(1) brightness(.6)}
+.gm-notes{display:flex;flex-direction:column;gap:12px}
+.gm-sticky{position:sticky;bottom:10px;z-index:2}
+.gm-arena{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:10px;padding:16px;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(var(--surface),var(--sunk))}
+.gm-side{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;min-width:0}
+.gm-side small{font-size:.8rem}
+.gm-vs{align-self:center;font:700 1.1rem var(--f-display);color:var(--muted);text-align:center;min-width:70px}
+.gm-log{display:inline-block;font:700 1.2rem var(--f-mono);animation:pop .5s ease}
+.gm-log.hit{color:var(--good)}.gm-log.hurt{color:var(--bad)}.gm-log.block{color:var(--blue)}
+.gm-tags{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;min-height:22px}
+.tag{font:500 .72rem var(--f-mono);padding:2px 7px;border-radius:10px;background:var(--sunk);border:1px solid var(--line)}
+.tag.fire{background:var(--brass-soft);border-color:var(--brass)}
+.spr.hit{animation:shake .45s ease,flash .45s ease}
+.spr.hurt{animation:shake .45s ease,flash .45s ease}
+.spr.atk{animation:lunge .35s ease}
+.spr.dead{filter:grayscale(1);opacity:.6;transform:rotate(-8deg)}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes flash{0%,60%{filter:brightness(2.2) saturate(.3)}100%{filter:none}}
+@keyframes lunge{50%{transform:translateX(14px)}}
+@keyframes pop{0%{transform:scale(.4);opacity:0}100%{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.spr,.gm-log{animation:none!important}}
+.gm-hint{border:1px dashed var(--brass);background:var(--brass-soft);border-radius:10px;padding:10px 14px;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+.gm-hint p{margin:0}
+.gm-jokers{display:flex;flex-direction:column;gap:6px}
+.gm-j{position:relative;display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font:inherit}
+.gm-j span{font-size:1.2rem}.gm-j small{font-size:.85rem}
+.gm-j em{font:600 .72rem var(--f-mono);font-style:normal;background:var(--sunk);border-radius:8px;padding:1px 6px}
+.gm-j.on{border-color:var(--blue);background:var(--blue-soft)}
+.gm-res{align-items:flex-start}
+.gm-modal{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;padding:16px}
+.gm-box{background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:var(--r);padding:18px;max-width:520px;width:100%;max-height:88vh;overflow:auto;display:flex;flex-direction:column;gap:10px}
+.gm-box.wide{max-width:820px}
+.gm-box p{margin:0}
+.btn[disabled]{opacity:.5;cursor:default}
+@media (max-width:560px){.spr{width:72px}.gm-arena{padding:10px;gap:4px}.hp{width:110px}.gm-vs{min-width:44px}}
 </style>
 </head>
 <body>
@@ -1676,6 +1736,522 @@ const SIM={"easy":[{"w":1,"q":"Which sense of media refers to organizations such
 {"w":7,"q":"Following Eco's rule, when should a universal theory be preferred over a bounded empirical claim?","qt":"Eco'nun kuralına göre evrensel bir kuram ne zaman somut ve sınırlı bir iddiaya tercih edilir?","o":["Only when it can show what more it explains","Always","Never","When it is more dramatic"],"e":"Aynı vakaları anlatan iki iddiadan, evrensel kuram fazlasını açıklayamıyorsa sınırlı olan tercih edilir.","p":15}]};
 </script>
 <script>
+/* Oyun verisi: W01 (aşamalar, düşmanlar, ek sorular, ipuçları) */
+const GAME={};
+GAME[1]={
+stages:[
+ {en:"What Is “New Media”?",tr:"Terimi sorgulamak",from:3,to:7,enemy:{en:"Buzzword Goblin",tr:"Moda Kelime Cini",spr:"goblin"}},
+ {en:"Characteristics & Tensions",tr:"Beş özellik ve gerilimler",from:8,to:11,enemy:{en:"The Straw Audience",tr:"Saman Seyirci",spr:"straw"}},
+ {en:"Technology & Causality",tr:"Teknoloji ve nedensellik",from:12,to:14,enemy:{en:"Determinist Bot",tr:"Determinist Robot",spr:"bot"}},
+ {en:"What Is a Medium? Protocols",tr:"Medium ve protokoller",from:15,to:18,enemy:{en:"Iceberg Golem",tr:"Buzdağı Golemi",spr:"ice"}},
+ {en:"History, Archive, Recurrence",tr:"Tarih, arşiv ve tekrar",from:19,to:24,enemy:{en:"Archive Wraith",tr:"Arşiv Hayaleti",spr:"ghost"}}
+],
+boss:{en:"The Supersession Titan",tr:"Yerini Alma Titanı",spr:"titan"},
+extra:[
+{q:"The relationship between a technical development and an institutional outcome requires:",qt:"Teknik bir gelişme ile kurumsal bir sonuç arasındaki ilişki ne gerektirir?",o:["Demonstration, not assertion","Assertion, not demonstration","Nothing; it is self-evident","A new technology"],e:"Slayta göre teknik gelişme ile kurumsal sonuç arasındaki ilişki iddia edilerek değil, gösterilerek kurulmalıdır.",p:5,h:["Bir şeyi söylemekle onu kanıtlamak arasındaki farkı düşün.","Think about the difference between claiming something and proving it."]},
+{q:"For technology and media industries, novelty equals:",qt:"Teknoloji ve medya endüstrileri için yenilik neye eşittir?",o:["Marketing","Funding/Careers","Policy legitimacy","Obsolescence"],e:"Endüstri için yenilik pazarlamadır: “yeterli” ürün yükseltme sattırmaz. Akademi için fon ve kariyer, hükümet için politika meşruiyetidir.",p:7,h:["Bir şirket yeni modelini neden “yeni” diye satar?","Why would a company sell its next model as “new”?"]},
+{q:"Which of the five characteristics is described as the most ideologically loaded term?",qt:"Beş özellikten hangisi en ideolojik yüklü terim olarak tanımlanır?",o:["Interactivity","Digitality","Dispersal","Hypertextuality"],e:"Etkileşim en ideolojik yüklü terimdir; aktif kullanıcının pasif kitleden kopuşunu varsayar.",p:8,h:["Aktif kullanıcı ile pasif kitle karşıtlığını hangi terim varsayar?","Which term assumes a break between an active user and a passive mass?"]},
+{q:"Hypertextuality was automated by digitality, but it is:",qt:"Hipermetinsellik dijitallikle otomatikleşti ama aslında nasıldır?",o:["Conceptually old","A purely digital invention","Philosophically unstable","An institutional sense of media"],e:"Bağlı düğümlerle doğrusal olmayan okuma dijitallikle otomatikleşti ama kavram olarak eskidir.",p:8,h:["Dipnotlu, çapraz göndermeli bir ansiklopedi düşün.","Think of an encyclopedia full of footnotes and cross-references."]},
+{q:"Digitality refers to:",qt:"Dijitallik neyi ifade eder?",o:["The conversion of physical input into discrete numerical values","The decentralization of production","Non-linear reading paths through linked nodes","Immersive simulation and network communities"],e:"Dijitallik fiziksel girdinin ayrık sayısal değerlere dönüşmesidir; birebir kopya, sıkıştırma ve doğrusal olmayan erişim sağlar.",p:8,h:["Sayılarla ilgili olan tanımı ara.","Look for the definition that is about numbers."]},
+{q:"Why are the five characteristics “a map, not a checklist”?",qt:"Beş özellik neden “kontrol listesi değil, harita”dır?",o:["Together they do not define a single class of objects","They are all false","They describe only old media","They rank media from best to worst"],e:"Bu özellikler birlikte tek bir nesne sınıfı tanımlamaz: birçok dijital medya hipermetinsel değildir, dağınık üretimin çoğu etkileşimli değildir.",p:8,h:["Her yeni medya beşini birden taşımak zorunda mı?","Must every new medium have all five at once?"]},
+{q:"“Interactivity vs. Automation” means that:",qt:"“Interactivity vs. Automation” ne anlama gelir?",o:["Interactivity is being actively displaced by algorithmic automation","Automation creates more user choice","Users automate the platforms","Both terms mean the same thing"],e:"Bu gerilimde kullanıcı etkileşimi, algoritmik otomasyon tarafından aktif olarak yerinden ediliyor.",p:10,h:["Akışında neyi göreceğine bugün kim karar veriyor?","Who decides what you see in your feed today?"]},
+{q:"In the web of tensions, where does productive analysis look?",qt:"Gerilimler ağında verimli analiz nereye bakar?",o:["Where these forces collide, because power operates in conflicts","Where all forces agree","Only at the content of media","Only at devices"],e:"Verimli analiz bu güçlerin çatıştığı yerleri bulmaktır, çünkü güç çatışmalarda işler.",p:10,h:["Gücün en çok görünür olduğu an uyum mu, çatışma mı?","Is power most visible in agreement or in conflict?"]},
+{q:"A user who contributes content to the system is an example of:",qt:"Sisteme içerik katan kullanıcı neye örnektir?",o:["Registrational Interactivity","Hypertextual Navigation","Interactive Communications","Immersive Navigation"],e:"Registrational Interactivity'de kullanıcı sisteme içerik katar. Yol seçmek navigasyon, kişiler arası alışveriş iletişimdir.",p:11,h:["Sisteme bir şey kaydetmek, “kayıt” ile ilgili terimi çağrıştırır.","Adding something to the system's record points to a term about “registering”."]},
+{q:"Which political vocabulary does “interactivity” import without argument?",qt:"“Interactivity” argüman sunmadan hangi politik sözlüğü ithal eder?",o:["Choice, empowerment, democratization","Ownership, labor, profit","Time, space, bias","Model, code, simulation"],e:"Terim seçim, güçlenme ve demokratikleşme gibi olumlu bir politik sözlüğü hiç argüman sunmadan beraberinde getirir.",p:11,h:["Kulağa olumlu ve özgürleştirici gelen kelimeleri seç.","Pick the words that sound positive and liberating."]},
+{q:"“Take Technical Specificity Seriously” means that:",qt:"“Take Technical Specificity Seriously” ne demektir?",o:["You cannot look only at representations and ignore the material properties of the channel","Technology determines culture","Only content matters","Devices are neutral conduits"],e:"Medium tarafsız bir kanal değildir; sadece temsillere bakıp kanalın maddi özelliklerini yok sayamazsın.",p:14,h:["Medium tarafsız bir boru mu, yoksa kendi özellikleri olan bir şey mi?","Is the medium a neutral pipe, or something with its own properties?"]},
+{q:"The working posture is described as:",qt:"Çalışma duruşu nasıl tanımlanır?",o:["Intentionally uncomfortable","Perfectly neutral","Technologically determinist","Purely cultural"],e:"Bu duruş iki tarafı birden reddettiği için bilinçli olarak rahatsız edicidir.",p:14,h:["İki kolay cevabı da reddeden bir duruş nasıl hissettirir?","How does a stance that refuses both easy answers feel?"]},
+{q:"In Winston's pipeline, what comes right after the Prototype?",qt:"Winston'ın boru hattında Prototype'tan hemen sonra ne gelir?",o:["Filter 1: Supervening Social Necessity","Diffusion","Status Quo","Filter 2: Law of Suppression of Radical Potential"],e:"Sıra: Scientific Competence → Prototype → Filter 1 (Supervening Social Necessity) → Diffusion → Filter 2 → Status Quo.",p:13,h:["Prototipin üretime geçmesi için önce bir talep gerekir.","A prototype needs a demand before it can be produced."]},
+{q:"In Gitelman's formula, technological form plus protocols equals:",qt:"Gitelman'ın formülünde teknolojik biçim + protokoller neye eşittir?",o:["A socially realized structure (a medium)","A neutral conduit","A prototype","An archive"],e:"Teknolojik biçim artı protokoller, zamanla kurumlar ve beklentilerle oluşan toplumsal olarak gerçekleşmiş bir yapı, yani medium eder.",p:15,h:["Sonuç tek seferlik bir şey değil, toplumla birlikte oluşan kalıcı bir yapı.","The result is not a one-off thing but a lasting structure built with society."]},
+{q:"According to Gitelman, a telephone without telephonic practices is:",qt:"Gitelman'a göre telefonsal pratikleri olmayan bir telefon nedir?",o:["An object, not a medium","A medium","A protocol","An archive"],e:"Protokolleri, yani kullanım pratikleri olmadan cihaz sadece bir nesnedir, medium değildir.",p:15,h:["Kimsenin nasıl kullanacağını bilmediği bir cihaz ne işe yarar?","What is a device that no one knows how to use?"]},
+{q:"What sits above the water in the protocol iceberg?",qt:"Protokol buzdağında suyun üstünde ne vardır?",o:["Technological form and technical standards","Norms and habits","Legal arrangements","Etiquette"],e:"Suyun üstünde görünür kısım vardır: cihazlar, dosya biçimleri, ağ kabloları. Normlar, hukuk ve görgü suyun altındadır.",p:16,h:["Görünür kısım dokunabildiğin şeylerdir.","The visible part is the things you can touch."]},
+{q:"Answering the phone with a greeting is an example of:",qt:"Telefonu selamla açmak neye örnektir?",o:["Norms & Habits","Legal Arrangements","Business Models","Technical Standards"],e:"Telefonu selamla açmak yazılı bir kural değil, alışkanlıktır; bu yüzden Norms & Habits katmanındadır.",p:16,h:["Bunu bir yasa mı söylüyor, yoksa herkes alışkanlıkla mı yapıyor?","Does a law require it, or does everyone just do it out of habit?"]},
+{q:"Authentication, indexing and payment clearing belong to which protocol layer?",qt:"Kimlik doğrulama, indeksleme ve ödeme takası hangi protokol katmanına aittir?",o:["Institutional Procedures","Etiquette","Norms & Habits","Technical Standards"],e:"Bunlar kurumların yürüttüğü işlemlerdir, yani Institutional Procedures.",p:16,h:["Bunları bankalar ve kurumlar yürütür.","Banks and institutions carry these out."]},
+{q:"Why must media history be a social and cultural history rather than an inventory of inventions?",qt:"Medya tarihi neden icat envanteri değil, sosyal ve kültürel tarih olmalıdır?",o:["Because protocols are social rules","Because inventions do not matter","Because devices never change","Because only engineers shape media"],e:"Core Concept: protokoller toplumsal kurallardır; bu yüzden medya tarihi toplumun tarihidir.",p:16,h:["Buzdağının su altındaki kısmı neyden oluşuyordu?","What was the underwater part of the iceberg made of?"]},
+{q:"“Consensus leaves no trace; controversy does” refers to:",qt:"“Uzlaşma iz bırakmaz; tartışma bırakır” hangisini anlatır?",o:["Emergence (the negotiation)","Breakdown (the violation)","Supersession","The archive asymmetry"],e:"Medium yeniyken protokoller patent başvuruları ve standart tartışmalarıyla kamuoyunda tartışılır; bu ortaya çıkış (emergence) anıdır.",p:18,h:["Medium henüz yeniyken neler tartışılır?","What gets debated while a medium is still new?"]},
+{q:"A user revolt over a privacy change makes protocols visible through:",qt:"Gizlilik değişikliğine kullanıcı isyanı protokolleri hangi yolla görünür kılar?",o:["Breakdown (the violation)","Emergence (the negotiation)","Diffusion","Supersession"],e:"Kural çiğnenince doğan öfke, kuralın var olduğunu gösterir: bu çöküş (breakdown) anıdır.",p:18,h:["Bir kural ancak çiğnendiğinde mi fark edilir?","Is a rule only noticed when it is broken?"]},
+{q:"According to the slides, in reality old media:",qt:"Slaytlara göre gerçekte eski medya ne yapar?",o:["Persist, hybridize and migrate into new niches","Disappear when a new medium arrives","Always merge into one device","Stop being produced"],e:"Eski medya sürer, melezleşir ve yeni nişlere göçer; örneğin plak hâlâ büyük miktarda üretiliyor.",p:19,h:["Plak ve basılı kitap bugün ne durumda?","What is the state of vinyl and printed books today?"]},
+{q:"In Edison's list of uses for the phonograph, music playback was:",qt:"Edison'ın fonograf kullanımları listesinde müzik çalma neydi?",o:["Only one item on the list","The main intended purpose","Never mentioned","Banned by law"],e:"Edison'ın listesinde ofis dikte, konuşan kitaplar ve son sözleri kaydetmek gibi birçok kullanım vardı; müzik sadece bir maddeydi.",p:20,h:["Bugünkü ana kullanım o zaman da ana kullanım mıydı?","Was today's main use also the main use back then?"]},
+{q:"Populations without durable documentation are, according to the slides:",qt:"Slaytlara göre kalıcı belgesi olmayan topluluklar nasıldır?",o:["Silent","Legible","Hyper-durable","Supersessed"],e:"Kalıcı belgesi olan dönem ve topluluklar okunabilir (legible), olmayanlar sessizdir (silent).",p:21,h:["Kaydı olmayanın sesi tarihte duyulur mu?","Can those with no record be heard in history?"]},
+{q:"The archive asymmetry says that the digital record is:",qt:"Arşiv asimetrisine göre dijital kayıt nasıldır?",o:["Too durable for the person and too fragile for the historian","Fragile for both","Durable for both","Too durable for the historian and too fragile for the person"],e:"Birey için veri sürer, aranabilir kalır ve çoğalır; kurumsal arşiv için ise formatlar okunamaz olur ve bağlantılar çürür.",p:22,h:["Eski bir paylaşımın hiç silinmemesi ile eski bir dosya formatının açılamaması arasındaki farkı düşün.","Compare an old post that never goes away with an old file format that no longer opens."]},
+{q:"According to the slides, a digital file survives only through:",qt:"Slaytlara göre dijital bir dosya ancak nasıl yaşar?",o:["Active, funded, continuous format migration","Being kept in a dry room","Being printed once","Being shared on social media"],e:"Elyazması kuru odada kalarak yaşar; dijital dosya ise ancak aktif, finanse edilen ve sürekli format göçüyle yaşar.",p:22,h:["Bir dosyanın açılabilir kalması için düzenli olarak ne yapılmalı?","What must be done regularly for a file to stay readable?"]},
+{q:"In the recurrence loop, “the erosion of sociality” belongs to:",qt:"Tekrar döngüsünde “sosyalliğin aşınması” hangi kutba aittir?",o:["The Panic","The Utopia","The Archive","The Protocol"],e:"Gençlerin tehlikeye girmesi, dilin yozlaşması ve sosyalliğin aşınması panik kutbunun iddialarıdır.",p:23,h:["Bu iddia umut mu, korku mu taşıyor?","Does this claim carry hope or fear?"]},
+{q:"Recognizing the recurrence loop works as an inoculation against:",qt:"Tekrar döngüsünü tanımak neye karşı aşı işlevi görür?",o:["Both technological euphoria and moral panic","Only moral panic","Only technological euphoria","Critical theory"],e:"İkisi yapısal olarak aynıdır: teknolojiye, yalıtılmış olarak, büyülü güç atfederler. Döngüyü tanımak ikisine karşı da korur.",p:24,h:["Döngünün iki kutbunu hatırla.","Remember both poles of the loop."]},
+{q:"Instead of asking “What are media doing?”, which question should we ask first?",qt:"“Medya ne yapıyor?” yerine önce hangi soruyu sormalıyız?",o:["Who built this, funded by whom, for what purpose?","How fast is this technology?","Is this technology new?","How many users does it have?"],e:"İspat yükünü kaydırmanın ilk sorusu budur. Sonra koşullar ve protokoller, hangi gruplar için hangi sonuçlar ve “bunu nereden biliyoruz?” sorulur.",p:24,h:["Teknolojinin arkasındaki insanları ve parayı sor.","Ask about the people and the money behind the technology."]}
+],
+hints:{
+"According to the course, a theoretical text is best described as:":["Teori bir şeyi tarafsızca anlatmaktan çok, bir şeye karşı çıkar.","A theory does less describing and more arguing against something."],
+"Why does the course interrogate the term “new media” instead of surveying platforms?":["Bir alanın temel kelimesini sorgulayamazsan o alandaki iddiaları nasıl değerlendirirsin?","If you can't question a field's founding word, how can you judge its claims?"],
+"Which belongs to the MATERIAL sense of “media”?":["Maddi anlam elle tutulabilen taşıyıcıyla ilgilidir.","The material sense is about a physical carrier you can hold."],
+"Which is an example of the INSTITUTIONAL sense of media?":["Kurumsal anlam örgütlerden bahseder, malzemelerden değil.","The institutional sense is about organizations, not materials."],
+"Which sense of media refers to organizations such as the press, broadcasting and publishing houses?":["Basın ve yayınevleri birer kurumdur.","The press and publishers are institutions."],
+"In the newspaper case study, digitization is described as:":["Gazeteler ilanlar göçtüğü ve borç biriktiği için geriledi. Dijitalleşmenin rolü neydi?","Newspapers declined because ads migrated and debt piled up. So what was digitization's role?"],
+"Which is listed as a “false conclusion” of the conflation error?":["Teknik değişimden çıkarılan kurumsal bir “ölüm” ya da “çöküş” ara.","Look for an institutional “death” or “collapse” inferred from technical change."],
+"Which statement best captures the “conflation error”?":["İki anlamı (maddi ve kurumsal) karıştırmak ne demek?","What does it mean to mix up the two senses, material and institutional?"],
+"Which is NOT one of the five tracks of the mid-1980s conjuncture?":["1980'lerin ortasında birleşen süreçler teknoloji, altyapı, para ve sahiplik, devletler ve tüketimle ilgiliydi. Hangisi bunlara uymuyor?","The processes that converged in the mid-1980s were about technology, infrastructure, money and ownership, states, and consumption. Which one does not fit?"],
+"Which track of the mid-1980s conjuncture refers to the dissolution of the Soviet bloc?":["Ülkeler ve bloklar arasındaki güç dengesiyle ilgili hat hangisi?","Which track is about the balance of power between states and blocs?"],
+"For academics, according to the slides, novelty equals:":["Yeni bir alt alan açmak akademisyene ne kazandırır?","What does opening a new subfield give an academic?"],
+"Why does “novelty” place the burden of justification on those who resist it?":["Batı modernitesinde “yeni” kelimesinin olumlu çağrışımlarını düşün.","Think of the positive associations of “new” in Western modernity."],
+"Why do governments benefit from the language of novelty?":["“Information Society” ya da “AI Strategy” gibi başlıklar politikaya ne katar?","What do labels like “Information Society” or “AI Strategy” add to policy?"],
+"Which of the five characteristics is called “philosophically unstable”?":["Simülasyon, ağ toplulukları ve aracılanmış deneyimi aynı anda kapsamaya çalışan terim.","The term that tries to cover simulation, network communities and mediated experience at once."],
+"Which characteristic refers to the decentralization of production and the fragmentation of mass audiences?":["Merkezden dağılmak, saçılmak anlamına gelen kelime.","The word that means scattering away from a center."],
+"“The capacity to publish is distributed to millions; the capacity to determine what is seen is concentrated in a few firms.” This tension is:":["Bir yanda dağılma, öbür yanda toplanma var.","On one side spreading out, on the other gathering together."],
+"“The infinite malleability of digital files is constrained by rigid standardization of delivery” describes which tension?":["Esneklik ile katı kurallar arasındaki gerilim.","A tension between flexibility and rigid rules."],
+"According to the slides, most ‘interaction’ is merely:":["Bir web sitesinde gerçekten bir şey mi yaratıyorsun, yoksa hazır seçenekler arasından mı seçiyorsun?","On a website, do you truly create, or pick from ready-made options?"],
+"According to the slides, the term “interactivity” relies on which false straw figure?":["Etkileşim kimin “karşıtı” olarak tanımlanır?","Interactivity is defined as the opposite of whom?"],
+"“Smartphones are changing us” is the typical syntax of:":["Bu cümlede fail kim: insanlar mı, teknoloji mi?","Who is the agent in this sentence: people or technology?"],
+"Brian Winston is associated with:":["Winston'ın boru hattında prototipi üretime çeken ilk filtreyi hatırla.","Recall the first filter in Winston's pipeline that pulls a prototype into production."],
+"In Cultural Materialism, technologies are:":["Williams'a göre teknolojiler toplumsal niyetlerden mi doğar, kendi başına mı?","For Williams, do technologies come from social intentions or on their own?"],
+"Which theory, according to the matrix, “accounts for historical surprises”?":["Ortamın maddi özelliklerinin duyuları yeniden düzenlediğini söyleyen kuram.","The theory saying a medium's material properties reorganize the senses."],
+"According to Cultural Materialism, who is the agent of technological change?":["Bu kuramda teknoloji değil, insanlar ve niyetleri öndedir.","In this theory, people and their intentions come first, not technology."],
+"Which pairing of theory and weakness/strength is correct?":["Matristeki “tarihsel sürprizleri açıklar” ifadesi hangi kurama aitti?","In the matrix, which theory “accounts for historical surprises”?"],
+"In Winston's pipeline, what happens at Filter 2?":["İkinci filtrenin adında “suppression” (bastırma) geçiyor.","The second filter's name includes “suppression”."],
+"In Winston's pipeline, what pulls the prototype into production?":["Birinci filtre bir ihtiyaçtan, talepten bahseder.","The first filter is about a need or demand."],
+"Which of Winston's filters slows down radical innovation through patent litigation and regulation?":["Radikal potansiyeli bastıran yasa.","The law that suppresses radical potential."],
+"“Refuse the inference to cultural outcomes” means that technical properties:":["Teknik özellik bir şeyi kolaylaştırabilir ama sonucu tek başına belirler mi?","A technical feature can make things easier, but does it decide the outcome alone?"],
+"A claim says “social media killed gatekeeping.” Following the working stance, what should an analyst do first?":["Teknik özellik ile kültürel sonuç arasında başka neler vardı?","What else sits between a technical property and a cultural outcome?"],
+"For Gitelman, a medium equals technological form plus:":["Teknolojiyi kullanılabilir kılan görünmez beklentiler.","The invisible expectations that make a technology usable."],
+"Which is an example of a LEGAL ARRANGEMENT in the protocol iceberg?":["Hukuk mahremiyet gibi hakları belirler.","Law sets rights such as privacy."],
+"When do protocols become visible?":["Protokoller yerleşince görünmez olur. Ancak iki özel anda görünürler.","Settled protocols are invisible; they show up only at two special moments."],
+"The supersession narrative is dangerous because it:":["“Radyo → TV → Dijital” sırası bugünü nasıl gösterir?","How does the “Radio → TV → Digital” sequence make the present look?"],
+"Which old medium does the slide describe as surviving as “the ultimate legal instrument”?":["Resmî bir tebligat ya da ihtar nasıl gönderilir?","How is an official legal notice sent?"],
+"The phonograph case shows that a medium's function is:":["Fonografın amacı başta belirsizdi. Sonra nasıl belirlendi?","The phonograph's purpose was unclear at first. How was it settled?"],
+"“The archive is not a neutral deposit” because:":["Neyin saklanacağına kim karar verir?","Who decides what gets kept?"],
+"According to the slides, our sense of the past is:":["Geçmişi sadece kaydedilenler üzerinden bilebiliriz.","We can only know the past through what was recorded."],
+"Why does the slide treat the archive as shaping our sense of the past?":["Döngüyü hatırla: olay → kayıt protokolü → arşiv.","Recall the loop: event → protocol of recording → archive."],
+"According to the Recurrence Loop, media discourse is generated by:":["Aynı iddialar telgraftan yapay zekâya tekrar ediyorsa, kaynak teknoloji olabilir mi?","If the same claims repeat from the telegraph to AI, can the source be the technology?"]
+}
+};
+</script>
+<script>
+GAME[2]={
+stages:[
+ {en:"Medium Theory & the Toronto School",tr:"Medyum kuramı ve iki yol",from:3,to:5,enemy:{en:"The Survey Clerk",tr:"Anket Memuru",spr:"clerk"}},
+ {en:"Innis: Cost, Bias, Monopoly",tr:"Innis: maliyet, eğilim, tekel",from:6,to:9,enemy:{en:"Clay Tablet Golem",tr:"Kil Tablet Golemi",spr:"golem"}},
+ {en:"McLuhan: Extensions & Content",tr:"McLuhan: uzantılar ve içerik",from:10,to:12,enemy:{en:"The Somnambulist",tr:"Uyurgezer",spr:"sleeper"}},
+ {en:"McLuhan's Tools",tr:"Yük, çağlar, sıcak/soğuk, Tetrad",from:14,to:16,enemy:{en:"Tetrad Hydra",tr:"Dört Başlı Tetrad",spr:"hydra"}},
+ {en:"Comparing & Applying",tr:"Karşılaştırma, itirazlar, dijital denetim",from:17,to:23,enemy:{en:"The Oracle",tr:"Kâhin",spr:"oracle"}}
+],
+boss:{en:"The Feed Leviathan",tr:"Sonsuz Akış Canavarı",spr:"leviathan"},
+extra:[
+{q:"The mid-century communication paradigm is summarized as:",qt:"Yüzyıl ortası iletişim paradigması nasıl özetlenir?",o:["Sender → Content → Receiver","Material Property → Cost → Access","Enhances → Obsolesces → Retrieves → Reverses","Event → Protocol → Archive"],e:"Yüzyıl ortası paradigma gönderici → içerik → alıcı modelidir ve tutum değişimi, ikna, kamuoyu gibi etkileri ölçer.",p:3,h:["Bir mesajın bir kişiden diğerine yolculuğunu düşün.","Think of a message travelling from one person to another."]},
+{q:"What does the Toronto School paradigm focus on?",qt:"Toronto Okulu paradigması neye odaklanır?",o:["The structural effect of the medium","The content of messages","Audience surveys","Persuasion campaigns"],e:"Toronto Okulu içerik yerine ortamın yapısal etkisine odaklanır.",p:3,h:["İçerik değil, taşıyıcının kendisi.","Not the content, but the carrier itself."]},
+{q:"What is the warning on the “Two Paths” slide?",qt:"“İki yol” slaytındaki uyarı nedir?",o:["Do not treat McLuhan as Innis with better slogans; they describe different mechanisms","Innis and McLuhan say exactly the same thing","Only Innis matters","Only McLuhan matters"],e:"Slayt, McLuhan'ı “daha iyi sloganları olan Innis” sanmamayı söyler; farklı mekanizmalar tanımlar, farklı sorulara cevap verirler.",p:4,h:["İki yol aynı soruya mı cevap veriyor?","Do the two paths answer the same question?"]},
+{q:"The Staples Thesis originally studied:",qt:"Staples tezi başlangıçta neyi inceledi?",o:["How a commodity's physical properties condition the economy built around it","How audiences interpret television","How databases are structured","How hypertext is read"],e:"1930'lardaki Staples tezi, bir ürünün fiziksel özelliklerinin etrafında kurulan ekonominin kurumsal gelişimini nasıl koşulladığını inceler.",p:5,h:["“Staple” kelimesi temel bir ticari ürünü anlatır.","The word “staple” refers to a basic trade commodity."]},
+{q:"For McLuhan, electric technology extends:",qt:"McLuhan'a göre elektrik teknolojisi neyi uzatır?",o:["The central nervous system","The foot","The hand","The eye"],e:"Tekerlek ayağı, alet eli, matbaa gözü uzatır; elektrik teknolojisi ise merkezi sinir sistemini uzatır.",p:10,h:["Bedenin bütün duyuları birbirine bağlayan sistemini düşün.","Think of the body's system that connects all the senses."]},
+{q:"For McLuhan, technologies are:",qt:"McLuhan'a göre teknolojiler nedir?",o:["Prosthetic extensions of the human body","Neutral tools","Commodities","Protocols"],e:"McLuhan teknolojileri insan bedeninin protez uzantıları olarak görür: tekerlek ayağı, alet eli uzatır.",p:10,h:["Tekerlek bedenin hangi parçasına benzer bir iş yapar?","Which body part does the wheel do the work of?"]},
+{q:"According to McLuhan, every extension changes:",qt:"McLuhan'a göre her uzantı neyi değiştirir?",o:["The ratio between the senses","Only the content we receive","Only the price of media","Nothing important"],e:"Her uzantı duyular arasındaki oranı değiştirir; teknolojiler nasıl algıladığımızı ve dolayısıyla nasıl düşündüğümüzü değiştirir.",p:10,h:["Duyular arasındaki dengeyi düşün.","Think about the balance between the senses."]},
+{q:"Is it true that McLuhan considered content unimportant?",qt:"McLuhan'ın içeriği önemsiz saydığı doğru mu?",o:["No; content is a distraction, not something unimportant","Yes; content does not matter at all","Yes; only content matters","No; he never mentioned content"],e:"Slayta göre en yaygın yanlış okuma budur. McLuhan içeriği önemsiz saymaz; içerik bir dikkat dağıtıcıdır.",p:12,h:["Slayt bunu “en yaygın yanlış okuma” olarak anlatır.","The slide calls this the most common misreading."]},
+{q:"What is McLuhan's aim regarding somnambulism?",qt:"Uyurgezerlik konusunda McLuhan'ın amacı nedir?",o:["To wake the reader up","To keep the reader asleep","To sell new media","To measure audiences"],e:"Uzantı nötr gibi deneyimlenir ve uyurgezerlik yaratır; McLuhan'ın amacı okuru uyandırmaktır.",p:12,h:["Uyurgezer birine ne yapmak istersin?","What would you want to do to a sleepwalker?"]},
+{q:"Why is the electric light described as a medium without content?",qt:"Elektrik ışığı neden içeriksiz bir medium olarak anlatılır?",o:["It carries no message but reorganizes human activity by abolishing the boundary between night and day","It carries too many messages","It is only used for advertising","It is not a technology"],e:"Elektrik ışığı hiçbir mesaj iletmez ama gece ile gündüz arasındaki sınırı kaldırarak insan faaliyetini yeniden düzenler.",p:14,h:["Işık bir mesaj taşımaz ama geceyi ne hale getirir?","Light carries no message, but what does it do to the night?"]},
+{q:"In McLuhan's diagnostic tool, “Scale” means:",qt:"McLuhan'ın teşhis aracında “Scale” ne demektir?",o:["Enlarging human functions and reach","Standardizing time","Generating new cities","Amplifying hot media"],e:"Ölçek insan işlevlerini ve erişimini büyütmektir. Zamanı standartlaştırmak hız, yeni şehirler üretmek örüntüdür.",p:14,h:["Ölçek, bir şeyin büyüklüğüyle ilgilidir.","Scale is about how big something gets."]},
+{q:"The emblem of the Mechanical Age is:",qt:"Mekanik Çağ'ın simgesi nedir?",o:["The assembly line","Automation","The feed","The electric light"],e:"Mekanik Çağ'ın simgesi montaj hattıdır: ayrık, özel, görsel olarak örgütlenmiş birey. Otomasyon Elektrik Çağı'nın simgesidir.",p:15,h:["Parçalı, sıralı işlerin en bilinen örneğini düşün.","Think of the classic example of fragmented, sequential work."]},
+{q:"The Mechanical Age was constituted by:",qt:"Mekanik Çağ ne ile oluştu?",o:["The alphabet, consolidated by print","The telegraph and radio","The computer","The television"],e:"Mekanik Çağ alfabeyle oluştu ve matbaayla pekişti. Telgraf, radyo, televizyon ve bilgisayar Elektrik Çağı'na aittir.",p:15,h:["Elektrikten önceki en temel yazı teknolojisi.","The most basic writing technology before electricity."]},
+{q:"A cool medium is:",qt:"Soğuk (cool) medium nedir?",o:["Low-definition, asking the audience to fill in the gaps","High-definition and information-dense","A medium with no content","A time-biased medium"],e:"Soğuk medium düşük tanımlıdır ve izleyicinin boşlukları doldurmasını ister; bu yüzden katılım yüksektir.",p:16,h:["Boşluk ne kadar çoksa izleyici o kadar çok iş yapar.","The more gaps there are, the more work the audience does."]},
+{q:"Which Tetrad question asks what a medium becomes when pushed to its extreme?",qt:"Tetrad'ın hangi sorusu bir medium uca itilince neye dönüştüğünü sorar?",o:["Reverses","Enhances","Obsolesces","Retrieves"],e:"Reverses, medium uç sınırına itilince neye dönüştüğünü sorar.",p:16,h:["Uçta tersine dönmek.","Flipping around at the extreme."]}
+],
+hints:{
+"Medium theory holds that the consequences of a communication technology derive chiefly from:":["Mesajlardan çok taşıyıcının kendisine bak.","Look at the carrier itself rather than the messages."],
+"Mid-century communication research mainly measured:":["Bu araştırmalar insanların fikirlerinin değişip değişmediğiyle ilgileniyordu.","This research cared about whether people's opinions changed."],
+"To understand a medium, medium theory tells us to:":["İçerik anketini bırak; ilişkilere ve duyulara bak.","Drop the content survey; look at relations and the senses."],
+"Path A of the Toronto School asks:":["A yolu gücün mimarisidir (Innis).","Path A is the architecture of power (Innis)."],
+"Which belongs to Path B, the Architecture of Perception?":["Algı yolu duyular ve estetikle ilgilidir.","The perception path is about the senses and aesthetics."],
+"According to the Staples Thesis, a medium is:":["Tezin adındaki kelime bir ticari ürünü anlatır.","The word in the thesis's name refers to a trade commodity."],
+"In the Staples Thesis, which properties of a medium condition its institutions?":["Bir malı taşırken neler önemlidir?","What matters when you transport a commodity?"],
+"In Innis's closed loop, what comes right after ‘Dictates Access’?":["Erişimi olan grup bilgiyle ne yapar?","What does the group with access do with knowledge?"],
+"Innis's “materialist mechanism” claims that physical properties:":["Innis doğrudan “neden olur” demez; maliyetten bahseder.","Innis does not say “causes”; he talks about cost."],
+"What does Innis mean by a “monopoly of knowledge”?":["Yazmak pahalıysa bilgi kimin elinde toplanır?","If writing is expensive, whose hands does knowledge gather in?"],
+"Papyrus, paper, print and radio are:":["Bunlar hafif ve uzağa kolay taşınır.","These are light and travel far easily."],
+"Which example illustrates a stable civilization balancing both biases?":["Sözlü geleneği alfabeyle dengeleyen uygarlık.","The civilization that balanced oral tradition with the alphabet."],
+"According to “The Problem of Balance”, what happens when one bias becomes overwhelming?":["Denge bozulursa uygarlığa ne olur?","What happens to a civilization when the balance breaks?"],
+"A heavy, durable medium like stone or clay is:":["Taş yüzyıllar boyu kalır ama uzağa taşınması zordur.","Stone lasts for centuries but is hard to carry far."],
+"Which is listed as a ‘mechanism of challenge’ to incumbent monopolies?":["Latince yerine halkın konuştuğu dilde basılan kitaplar.","Books printed in the people's own language instead of Latin."],
+"How is Medieval Europe described in the migration of centers?":["Manastırlarda saklanan dayanıklı yazı yüzeyini düşün.","Think of the durable writing surface kept in monasteries."],
+"What is Innis's diagnosis of 20th-century Western industrial societies?":["Haber döngüsü süreyi yok ediyorsa hangi eğilim baskındır?","If the news cycle destroys duration, which bias dominates?"],
+"According to Innis, why are 20th-century Western societies unstable?":["“A Plea for Time” başlığı neyin eksik olduğunu söylüyor?","What does the title “A Plea for Time” say is missing?"],
+"For McLuhan, print extends the:":["Matbaa ile okumak hangi duyuyu kullanır?","Which sense does reading print use?"],
+"Why does the outer layer of a medium remain invisible?":["Dikkatimiz alışkanlıkla hangi katmana takılır?","Which layer does our attention habitually stick to?"],
+"“The content of any medium is always another medium” is presented under which idea?":["İç içe geçmiş katmanları düşün.","Think of layers nested inside each other."],
+"McLuhan's ‘somnambulism’ refers to:":["Uyurgezer, yaptığının farkında olmayan kişidir.","A sleepwalker is unaware of what they are doing."],
+"Why is content compared to a juicy piece of meat carried by a burglar?":["Hırsız köpeğe et atarsa köpek ne yapar?","If a burglar throws meat to a dog, what does the dog do?"],
+"In McLuhan's view, why is the content of a medium a distraction?":["Biz içeriğe bakarken medium ne yapıyor?","What is the medium doing while we look at the content?"],
+"In the railway image, standardized time and new cities illustrate:":["Tren ne taşırsa taşısın, şehirlere ne olur?","Whatever the train carries, what happens to cities?"],
+"In McLuhan's diagnostic tool, “Pace” means:":["Hız, zamanla ilgilidir.","Pace is about time."],
+"The Electric Age is characterized by:":["Elektrik anlıktır ve ayrılanı birleştirir.","Electricity is instant and brings separated things back together."],
+"Which Tetrad question asks ‘What older, previously obsolesced medium does it bring back?’":["Eskiyi “geri almak”.","Taking the old one back."],
+"Which Tetrad question asks what a medium drives out of prominence?":["Bir şeyi eskitmek, gözden düşürmek.","Making something obsolete."],
+"How many questions does McLuhan's Tetrad ask?":["Adı “tetra” ile başlar.","Its name starts with “tetra”."],
+"McLuhan's primary evidence comes from:":["McLuhan kanıtını tarihsel kayıtlardan değil, kültürden toplar.","McLuhan draws evidence from culture, not historical records."],
+"Innis's analytical vocabulary is:":["Innis bir ekonomi tarihçisidir.","Innis is an economic historian."],
+"Which thinker's analytical vocabulary is institutional, economic and administrative?":["Staples tezini yazan düşünür.","The thinker behind the Staples Thesis."],
+"The ‘Unfalsifiability’ objection says medium theory risks becoming:":["Hiçbir gözlemle çürütülemeyen söz bir argüman mıdır, yoksa kehanet mi?","Is a claim no observation can refute an argument or a prophecy?"],
+"In the 360-degree framework, McLuhan's sensory mapping cannot explain:":["McLuhan'ın kör noktası politik ekonomiydi.","McLuhan's blind spot was political economy."],
+"What do Innis and McLuhan combined provide in the 360-degree framework?":["Biri gücü, diğeri algıyı haritalar.","One maps power, the other maps perception."],
+"Applying McLuhan to digital media, ‘Pattern’ refers to:":["Başı sonu olmayan, sürekli kayan bir liste.","A list that scrolls forever, with no beginning or end."],
+"In the Innisian Questionnaire, ‘Data Asymmetry’ means:":["İncelenmesi gereken veri kimin elinde?","Who holds the data that should be examined?"],
+"In the Innisian questionnaire, “Visibility” refers to:":["Neyin görüneceğine karar veren kurallar açık mı?","Are the rules deciding what is seen public?"],
+"Applying the Innisian questionnaire to a platform, “Visibility” is answered by noting that:":["Akışını sıralayan algoritmayı görebiliyor musun?","Can you see the algorithm that ranks your feed?"],
+"According to the legacy slide, a discipline studying only representations and audiences cannot explain:":["Aynı haber gazetede ve televizyonda aynı etkiyi mi yapar?","Does the same news have the same effect in print and on TV?"],
+"What real object did medium theory discover, according to the legacy slide?":["Yükün değil, yapının kendisi.","Not the cargo, but the structure itself."]
+}
+};
+</script>
+<script>
+GAME[3]={
+skip:["Which date is linked to the Turing Machine on the slides?"],
+stages:[
+ {en:"Two Histories & What New Media Is NOT",tr:"İki tarih ve yanlış iddialar",from:3,to:5,enemy:{en:"Punched Card Golem",tr:"Delikli Kart Golemi",spr:"card"}},
+ {en:"The Five Principles",tr:"Manovich'in beş ilkesi",from:6,to:10,enemy:{en:"Five-Arm Automaton",tr:"Beş Kollu Otomat",spr:"bot2"}},
+ {en:"Screens, Interface, Avant-Garde",tr:"Ekranlar, arayüz, avangart",from:11,to:14,enemy:{en:"The Dropdown Wraith",tr:"Açılır Menü Hayaleti",spr:"ghost2"}},
+ {en:"Database vs. Narrative",tr:"Veritabanı ve anlatı",from:15,to:19,enemy:{en:"Database Dragon",tr:"Veritabanı Ejderi",spr:"dragon"}},
+ {en:"Blind Spots & the Ranked Feed",tr:"Kör noktalar ve sıralı akış",from:20,to:25,enemy:{en:"The Ranker",tr:"Sıralayıcı",spr:"eye"}}
+],
+boss:{en:"The Software Overlord",tr:"Yazılım Efendisi",spr:"titan2"},
+extra:[
+{q:"What is the result of the two histories converging, according to the slides?",qt:"Slaytlara göre iki tarihin birleşmesinin sonucu nedir?",o:["Programmable Media","Mass media","Dead media","Hot media"],e:"Kültürü saklama ve sayı işleme hatları birleşince ortaya programlanabilir medya (Programmable Media) çıkar.",p:3,h:["Hesaplama kültüre uygulanınca medya “kodla yönetilebilir” hale gelir.","When computation applies to culture, media becomes manageable by code."]},
+{q:"How do the slides correct the claim that discreteness is a digital invention?",qt:"Slaytlar ayrıklığın dijital bir icat olduğu iddiasını nasıl düzeltir?",o:["Print and cinema were already discrete (alphabets, individual frames)","Analogue media are always discrete","Discreteness does not exist","Only photography is discrete"],e:"Matbaa harflerden, sinema tek tek karelerden oluşur; yani ayrıklık dijitalle başlamadı.",p:4,h:["Bir film şeridi neyden oluşur?","What is a film strip made of?"]},
+{q:"Why is calling human-computer interaction “interactive” a problem, according to the slides?",qt:"Slaytlara göre insan-bilgisayar etkileşimine “etkileşimli” demek neden sorunludur?",o:["It is a tautology and hides what happens to the user's cognitive agency","It is too technical","It is always false","It ignores hardware"],e:"Buna “etkileşimli” demek totolojidir ve kullanıcının bilişsel failliğine ne olduğunu gizler.",p:4,h:["Bir şeyi kendisiyle tanımlamak ne kadar bilgi verir?","How much does defining something by itself tell you?"]},
+{q:"Clicking a branch or choosing from a menu is, according to the slides:",qt:"Slaytlara göre bir dala tıklamak ya da menüden seçmek nedir?",o:["Not emancipation","True emancipation","A form of authorship","Pure creativity"],e:"Tıklamak özgürleşme değildir; kullanıcı kendi çağrışımlarını kurmak yerine başkasının kurduğu yapıyı izler.",p:5,h:["Menüdeki seçenekleri kim hazırladı?","Who prepared the options in the menu?"]},
+{q:"The Dynamic Screen (cinema) requires the viewer's:",qt:"Dinamik ekran (sinema) izleyiciden ne gerektirir?",o:["Immobility (the captive body)","Active input","Constant clicking","Travel"],e:"Sinema geçmiş bir olayın hareketli görüntüsünü sunar ve izleyicinin hareketsizliğini gerektirir: tutsak beden.",p:11,h:["Sinema salonunda koltuğunda ne yaparsın?","What do you do in your seat at the cinema?"]},
+{q:"Scrolling, pages, margins and sequential reading come from which tradition?",qt:"Kaydırma, sayfa, kenar boşluğu ve sıralı okuma hangi gelenekten gelir?",o:["The Printed Word","Cinema","HCI","Radio"],e:"Bu öğeler matbaa geleneğinden gelir. Çerçeveleme ve montaj sinemadan, menüler ve pencereler HCI'den gelir.",p:12,h:["Kitaptan gelen öğeleri düşün.","Think of elements that come from books."]},
+{q:"In software, what happens to the visible cut of classical cinema?",qt:"Yazılımda klasik sinemanın görünür kesiğine ne olur?",o:["It shifts to the invisible seam of compositing","It becomes more visible","It disappears from culture entirely","It turns into a database"],e:"Klasik sinema ayrı çekimlerin görünür yan yanalığına dayanıyordu; yazılım montajı gizler, estetik görünür kesikten görünmez dikişe kayar.",p:14,h:["Bugünkü efektli bir sahnede birleştirme yerini görebiliyor musun?","Can you see where a modern effects shot was joined?"]},
+{q:"Which basic operation means acting remotely in real time?",qt:"Hangi temel işlem uzaktan gerçek zamanlı eylem demektir?",o:["Teleaction","Selection","Compositing","Transcoding"],e:"Teleaction uzaktan gerçek zamanlı eylemdir. Selection hazır öğeden seçmek, compositing birleştirmektir.",p:14,h:["“Tele” uzak demektir.","“Tele” means far."]},
+{q:"In the database vs. narrative comparison, narrative logic is:",qt:"Veritabanı-anlatı karşılaştırmasında anlatının mantığı nedir?",o:["A causal trajectory linking elements","No causal link between elements","Order imposed at the query","A spatial list of equal items"],e:"Anlatı olayları zamansal sırayla ve nedensel bir gidişatla bağlar. Nedensel bağ olmaması veritabanına aittir.",p:16,h:["Bir romanda olaylar birbirine nasıl bağlanır?","How are events connected in a novel?"]},
+{q:"How are streaming services organized, according to the slides?",qt:"Slaytlara göre yayın (streaming) servisleri nasıl örgütlenir?",o:["As databases containing narratives","As pure narratives","As archives","As linear broadcasts"],e:"Anlatı barındıran platformlar bile yapısal olarak anlatıları içeren veritabanları olarak örgütlenmiştir.",p:16,h:["Dizi platformunun ana sayfasında film nasıl seçilir?","How do you pick a film on a streaming home page?"]},
+{q:"Which question does the database ask, as opposed to the archive?",qt:"Arşivin aksine veritabanı hangi soruyu sorar?",o:["What is it possible to record here in the first place?","What was kept and why?","Who owns the data?","How old is the record?"],e:"Arşiv “ne saklandı ve neden?” diye sorar; veritabanı ise “burada en baştan neyin kaydedilmesi mümkün?” diye sorar.",p:19,h:["Veritabanının alanları neyin girilebileceğini belirler.","A database's fields decide what can be entered."]},
+{q:"What does the schema do to human experiences that cannot be recorded?",qt:"Şema kaydedilemeyen insan deneyimlerine ne yapar?",o:["Makes them completely invisible, not just missing","Stores them as notes","Makes them more visible","Turns them into narratives"],e:"Şema kaydedilemeyen deneyimleri sadece eksik değil, tamamen görünmez kılar.",p:19,h:["Formda kutusu olmayan bilgiye ne olur?","What happens to information that has no box on the form?"]},
+{q:"What does formalism deliberately ignore, according to the critique?",qt:"Eleştiriye göre biçimcilik neyi bilerek göz ardı eder?",o:["Who owns software, who profits and whose labor built it","How software works","The five principles","Interfaces"],e:"Biçimcilik yazılımın nasıl çalıştığını açıklar ama sahipliği, kârı ve emeği göz ardı eder.",p:21,h:["Politik ekonominin sorularını düşün.","Think of the questions of political economy."]},
+{q:"In 2001, the syntagm was produced by:",qt:"2001'de sentagma kim tarafından üretiliyordu?",o:["The user's conscious choices","The system on the user's behalf","Advertisers","The schema alone"],e:"2001'de sentagma kullanıcının bilinçli seçimleriyle üretiliyordu; bugün sistem tarafından kullanıcı adına üretiliyor.",p:23,h:["Algoritmalar baskın olmadan önce yolu kim seçiyordu?","Before algorithms dominated, who chose the path?"]}
+],
+hints:{
+"The two parallel histories that converge at the punched card are:":["Biri fotoğraf ve sinema, diğeri Babbage ve Turing hattı.","One is photography and cinema, the other Babbage and Turing."],
+"What happens when media is translated into numerical form?":["Sayıya dönüşen her şey bilgisayarla işlenebilir.","Anything turned into numbers can be processed by a computer."],
+"How do the slides correct the myth that “digitization degrades the cultural record”?":["Bir dosyayı kopyalayınca kopya bozulur mu?","Does a file degrade when you copy it?"],
+"The interactivity trap is that clicking a branch:":["O dalları kim kurmuştu?","Who built those branches?"],
+"In “The Interactivity Trap”, computational media externalizes:":["İçeride olan bir şey dışarı, ekrana taşınıyor.","Something inside is moved outside, onto the screen."],
+"Why is “interactivity” a trap in Manovich's account?":["Kendi çağrışımın yerine kimin çağrışımını izliyorsun?","Whose associations are you following instead of your own?"],
+"Which principle comes third in the dependency cascade?":["Sıra: sayısal temsil, modülerlik, ...","The order: numerical representation, modularity, ..."],
+"“A digital composite never fully closes” describes:":["Katmanlar her zaman ayrı kalır.","The layers always stay separate."],
+"Numerical representation means that media objects can be:":["Matematiksel veri ne ile işlenir?","What processes mathematical data?"],
+"Which of Manovich's principles says that the parts of a media object stay separate at every scale?":["Piksel, katman, dosya: hepsi ayrı parçalar.","Pixel, layer, file: all separate parts."],
+"When media objects become infinitely abundant, culturally significant labor shifts to:":["Her şey bolsa asıl iş bulmak mı, yapmak mı?","If everything is abundant, is the real work making or finding?"],
+"According to the slides, high-level automation:":["Arama motorunun yaptığı işi düşün.","Think of what a search engine does."],
+"Under variability, a media object is:":["Nesne ne zaman bir araya getirilir?","When is the object assembled?"],
+"Under the principle of variability, fixity is:":["Varsayılan durum değişkenlikse, sabitlik nasıl sağlanır?","If variability is the default, how is fixity achieved?"],
+"A social media feed built from a database, a user model and an optimization algorithm shows which principle most directly?":["Herkes farklı bir akış görüyor.","Everyone sees a different feed."],
+"“We curate profiles, organize memories in folders and experience reality through feeds” is offered as proof of:":["Bilgisayarın kategorileri günlük dile geçmiş.","Computer categories have entered everyday language."],
+"“Genre, narrative, mood, composition” belong to:":["Bunlar bilgisayar terimi mi, kültür terimi mi?","Are these computer terms or culture terms?"],
+"Transcoding means that:":["Hangi katman hangisini biçimlendiriyor?","Which layer shapes which?"],
+"The Real-Time Screen is associated with:":["Bilgisayar ekranında beden ne yapar?","What does the body do at a computer screen?"],
+"The Classical Screen presents:":["Klasik ekran bir resimdir.","The classical screen is a painting."],
+"Which screen type shows a continuously updated present condition that the user can intervene in?":["Sürekli güncellenen ve müdahale edilen: bilgisayar.","Constantly updated and open to input: the computer."],
+"Which is NOT one of the three traditions of the cultural interface?":["Üç gelenek: matbaa, sinema ve insan-bilgisayar arayüzü.","The three traditions: print, cinema and the human-computer interface."],
+"“Desktop metaphor, windows, menus, direct manipulation” come from which tradition?":["Bunlar bilgisayarın kendi geleneğinden gelir.","These come from the computer's own tradition."],
+"In software, montage becomes:":["Video düzenleme programındaki yatay şeridi düşün.","Think of the horizontal strip in a video editor."],
+"What does “The Repertoire” mean in software culture?":["Boş tuval mi, hazır kütüphane mi?","A blank canvas, or a ready-made library?"],
+"Manovich compares the database as symbolic form to:":["Rönesans'ın mekânı örgütleme biçimi.","The Renaissance way of organizing space."],
+"According to the slides, a database has:":["Veritabanında bir “son sayfa” var mı?","Does a database have a “last page”?"],
+"In new media, according to the paradigm-syntagm inversion, what is materially stored?":["Diskte ne duruyor: seçenekler mi, yol mu?","What sits on the disk: the options or the path?"],
+"In pre-digital language, which element is virtual?":["Söylediğin cümle gerçek; peki kafandaki seçenekler?","The sentence you speak is actual; what about the options in your head?"],
+"In new media, the relationship between paradigm and syntagm is:":["Dildeki ilişki yeni medyada ne olur?","What happens to the language relationship in new media?"],
+"The methodological rule of the triangle of media analysis says media analysis must interrogate:":["Sadece ekrana bakmak neyi kaçırır?","What does looking only at the screen miss?"],
+"Which is the second element of the triangle of media analysis?":["Veri ile arayüz arasındaki kurallar.","The rules between the data and the interface."],
+"What are the three parts of the triangle of media analysis?":["Veri, kurallar, geçiş.","Data, rules, traversal."],
+"In the 2024 test, which principle's status is ‘Dominant’?":["Filtrelerden üretken yapay zekâya geçen ilke.","The principle that moved from filters to generative AI."],
+"According to the 2024 test, variability has mutated into:":["İki kullanıcı aynı şeyi görüyor mu?","Do two users see the same thing?"],
+"In the 2024 test, which status is given to transcoding?":["Yazılım katmanı artık ne kadar baskın?","How dominant is the software layer now?"],
+"The risk of formal analysis that ignores political economy is:":["Kâr için yapılan bir seçim teknik zorunluluk gibi görünürse ne olur?","What if a profit-driven choice looks like a technical necessity?"],
+"Why is “the schema an argument about the world”?":["Şemayı kim tasarlar ve neye karar verir?","Who designs the schema and what do they decide?"],
+"Why is a schema “an argument about the world”?":["Şema neyin var sayılacağına karar verir.","The schema decides what counts as existing."],
+"Today's ranked feed syntagm is optimized for:":["Akışı sıralayan sistem kimin çıkarına çalışıyor?","Whose interest does the ranking system serve?"],
+"According to Manovich, the decisive property of new media is:":["Dijitalleşmeden de öte: kodla üretilmek ve yönetilmek.","Beyond digitization: being produced and managed by code."]
+}
+};
+</script>
+<script>
+GAME[4]={
+stages:[
+ {en:"Inadequate Models & Remediation",tr:"Yetersiz modeller ve remediation",from:3,to:7,enemy:{en:"The Progress Marcher",tr:"İlerleme Yürüyücüsü",spr:"goblin2"}},
+ {en:"Immediacy, Hypermediacy & Degrees",tr:"Dolaysızlık, aşırı aracılık, dereceler",from:8,to:12,enemy:{en:"Frame Phantom",tr:"Çerçeve Hayaleti",spr:"ghost3"}},
+ {en:"Media Archaeology",tr:"Medya arkeolojisi ve zaman biçimleri",from:14,to:16,enemy:{en:"The Ruin Digger",tr:"Harabe Kazıcısı",spr:"clerk2"}},
+ {en:"Topos, Dead & Imaginary Media",tr:"Topos, ölü ve hayali medya, arşiv",from:17,to:20,enemy:{en:"Dead Media Zombie",tr:"Ölü Medya Zombisi",spr:"zombie"}},
+ {en:"Case Studies & Politics",tr:"Bugünden örnekler ve alanın siyaseti",from:21,to:25,enemy:{en:"The Grid Beast",tr:"Izgara Canavarı",spr:"bot3"}}
+],
+boss:{en:"The Inevitability Engine",tr:"Kaçınılmazlık Makinesi",spr:"titan3"},
+extra:[
+{q:"Why is the Replacement Model inadequate?",qt:"Yerini alma (Replacement) modeli neden yetersizdir?",o:["Old media persist, hybridize and find new niches","New media always kill old media","Media have no history","It ignores devices"],e:"Her yeni medium'un öncekinin yerini kalıcı olarak aldığı bir mittir; eski medya sürer, melezleşir, yeni nişler bulur.",p:4,h:["Plak ve kitap bugün hâlâ var mı?","Do vinyl and books still exist today?"]},
+{q:"According to Bolter & Grusin, a medium is:",qt:"Bolter ve Grusin'e göre medium nedir?",o:["That which remediates","A technical standard","A device","A protocol"],e:"Tanım şöyledir: “A medium is that which remediates.” Medium öncüllerinden aldığıyla tanımlanır.",p:6,h:["Tanım, kavramın adından çıkar.","The definition comes from the concept's own name."]},
+{q:"Which is NOT one of the four things a new medium does to an older one?",qt:"Yeni medium'un eski medium'a yaptığı dört şeyden hangisi değildir?",o:["Deletes","Represents","Absorbs","Rivals"],e:"Yeni medium eskiyi temsil eder, emer, yeniden biçimlendirir ve onunla yarışır. Silmek bu listede yoktur.",p:6,h:["Remediation eskiyi yok etmez, onunla ilişki kurar.","Remediation does not destroy the old, it relates to it."]},
+{q:"According to the slides, immediacy is:",qt:"Slaytlara göre dolaysızlık nedir?",o:["An old cultural project with a constantly renewed technical program","A digital invention","Only found in VR","The opposite of authentic experience"],e:"Dolaysızlık dijital bir icat değildir; doğrusal perspektiften VR'a kadar sürekli yenilenen eski bir kültürel projedir.",p:8,h:["Rönesans perspektifi de bunun bir adımıydı.","Renaissance perspective was also one step of it."]},
+{q:"Old media borrowing conventions from new media to manage competitive threats is called:",qt:"Eski medyanın rekabet tehdidini yönetmek için yeni medyadan uzlaşım ödünç alması nedir?",o:["Reverse remediation","Minimal transfer","Immediacy","Dead media"],e:"Ters remediation bir savunma refleksidir; örneğin sinema video oyunlarının görsel dilini benimser.",p:11,h:["Ödünç alma bu sefer ters yönde.","This time the borrowing goes the other way."]},
+{q:"The “Formalism” objection says remediation cannot explain:",qt:"“Formalism” itirazına göre remediation neyi açıklayamaz?",o:["Why one firm's standard prevails over another's","Formal borrowing","Immediacy","Hypermediacy"],e:"Biçimcilik politik ekonomiyi yok sayar: biçimsel ödünç almayı açıklar ama bir firmanın standardının neden kazandığını açıklayamaz.",p:12,h:["Biçimin ötesinde para ve piyasa var.","Beyond form, there is money and the market."]},
+{q:"Which is one of the refusals of media archaeology?",qt:"Hangisi medya arkeolojisinin reddettiği şeylerdendir?",o:["Teleology: media do not develop toward a final, perfect form","Studying dead ends","Studying recurrence","Studying the archive"],e:"Medya arkeolojisi ilerleme anlatılarını, teleolojiyi, düz sırayı ve “hayatta kalan üstündür” varsayımını reddeder.",p:14,h:["Medyanın “mükemmel bir son biçime” doğru gittiği fikri.","The idea that media move toward a perfect final form."]},
+{q:"Foucault's contribution to media archaeology is:",qt:"Foucault'nun medya arkeolojisine katkısı nedir?",o:["Conditions of possibility: excavating the structural rules governing what could be said or seen","The outmoded","Materialism: media are agents of history","Variantology"],e:"Foucault bir dönemde neyin söylenebileceğini ve görülebileceğini yöneten yapısal kuralları kazır.",p:15,h:["Bir dönemde neyin “mümkün” olduğunu soran düşünür.","The thinker who asks what was “possible” in a period."]},
+{q:"Kittler says that to understand culture you should:",qt:"Kittler'e göre kültürü anlamak için ne yapmalısın?",o:["Read the circuit diagram","Interview the inventors","Count the audience","Read only literature"],e:"Kittler'in materyalizmine göre tarihin failleri medyadır; kültürü anlamak için devre şemasını okumak gerekir.",p:15,h:["Makinenin içine bak.","Look inside the machine."]},
+{q:"“At any given moment, multiple media regimes coexist and interfere” describes:",qt:"“Herhangi bir anda birden çok medya rejimi bir arada var olur” hangisidir?",o:["Simultaneity","Recurrence","The Spiral","Deep Time"],e:"Eşzamanlılıkta yayın TV, internet yayını, AM radyo, plak ve yapay zekâ aynı anda yaşar.",p:16,h:["Aynı anda, birlikte.","At the same time, together."]},
+{q:"“The same promises and anxieties reappear across centuries attached to different machines” describes:",qt:"“Aynı vaat ve kaygılar yüzyıllar boyunca farklı makinelerle geri gelir” hangisidir?",o:["Recurrence","Simultaneity","Deep Time","The Spiral"],e:"Tekrar (recurrence), aynı vaatlerin ve korkuların farklı makinelerle geri gelmesidir.",p:16,h:["“Re-” öneki tekrarı anlatır.","The prefix “re-” means again."]},
+{q:"If a promotional claim fits a topos, it is:",qt:"Bir tanıtım iddiası bir topos'a uyuyorsa, bu nedir?",o:["A reactivated old fantasy, not evidence of the technology's properties","Proof of the technology's real power","A dead medium","An imaginary medium"],e:"Topos'a uyan iddia yeni teknolojinin gerçek özelliklerinin kanıtı değil, yeniden etkinleşmiş eski bir fantezidir.",p:17,h:["“Bu insanlığı birleştirecek” sözünü ilk kez mi duyuyoruz?","Is “this will unite humanity” the first time we have heard it?"]},
+{q:"The Material Wing of media archaeology works by:",qt:"Medya arkeolojisinin maddi kanadı nasıl çalışır?",o:["Building, repairing, dismantling and deliberately misusing old machines","Close reading of patents and advertisements","Surveying audiences","Writing histories of progress"],e:"Maddi kanat devreler ve sinyallerle uğraşır: eski makineleri kurar, onarır, söker ve bilerek yanlış kullanır.",p:19,h:["Elle, tornavidayla çalışan kanat.","The wing that works by hand, with a screwdriver."]},
+{q:"What does imaginary media map, according to the slides?",qt:"Slaytlara göre hayali medya neyin haritasını çıkarır?",o:["The horizon of desire, which shapes engineering","The circuit diagram","Market shares","Failed business models"],e:"Hayali medya arzunun ufkunu çizer: arzular mühendisliği biçimlendirir, finansman hayal edilen yetenekleri izler.",p:18,h:["Hiç yapılmamış cihazlar neyi gösterir: neyin istendiğini.","What do never-built devices show? What was wanted."]},
+{q:"What is the irony of Virtual Reality according to the slides?",qt:"Slaytlara göre sanal gerçekliğin ironisi nedir?",o:["To erase the medium, a massive, highly visible apparatus must be strapped to the body","It is too cheap","It has no interface","It is a dead medium"],e:"VR şeffaf dolaysızlığın en saf arayışıdır ama medium'u silmek için bedene devasa ve görünür bir aygıt takmak gerekir.",p:21,h:["Medium'u görünmez yapmak için kafana ne takıyorsun?","What do you strap to your head to make the medium invisible?"]},
+{q:"Identifying a topos in AI claims shifts the burden of proof:",qt:"Yapay zekâ iddialarında topos'u tanımak ispat yükünü nereye kaydırır?",o:["From the technology to the cultural fantasy","From the user to the firm","From the past to the future","Nowhere"],e:"Topos'u tanımak ispat yükünü teknolojiden alıp kültürel fanteziye kaydırır.",p:22,h:["Asıl incelenmesi gereken makine mi, hikâye mi?","Is it the machine or the story that needs examining?"]}
+],
+hints:{
+"What is the core question of the remediation and media archaeology lecture?":["Hiçbir medium boşlukta doğmaz. O zaman medyalar arasındaki bağları nasıl çizeriz?","No medium is born in a vacuum. So how do we draw the links between media?"],
+"Which inadequate model treats a medium as a self-contained system with intrinsic properties?":["Medium'u diğerlerinden yalıtılmış gibi düşünmek.","Thinking of a medium as isolated from others."],
+"The Progress Model describes media history as a march toward:":["İlerleme anlatısı hep “daha gerçekçi” bir hedefe yürür.","The progress story always marches to a “more real” goal."],
+"Which model is called an “industry-promoted fiction”?":["Şirketler her yeni ürünü “bir adım ileri” diye satar.","Companies sell every new product as “a step forward”."],
+"Remediation is described as:":["Remediation düzenli bir soy ağacıdır.","Remediation is an orderly family tree."],
+"How does media archaeology differ from remediation?":["Arkeoloji kazanları değil, harabeleri kazar.","Archaeology digs up the ruins, not the winners."],
+"For Bolter & Grusin, a medium's identity is:":["Medium kendi cihazıyla mı, öncülleriyle ilişkisiyle mi tanımlanır?","Is a medium defined by its device or by its relation to predecessors?"],
+"Immediacy and hypermediacy are both driven by:":["İkisi rakip değil; aynı tek arzuya hizmet ediyor.","They are not rivals; they serve the same single desire."],
+"In immediacy:":["Dolaysızlık şeffaflıktır.","Immediacy is transparency."],
+"Which two strategies make up the double logic of remediation?":["Biri medium'u siler, diğeri sergiler.","One erases the medium, the other displays it."],
+"The 19th-century panorama is an example of:":["Panorama izleyiciyi çepeçevre sarar, çerçeveyi gizler.","The panorama surrounds the viewer and hides the frame."],
+"Which is an example of HYPERMEDIACY?":["Birçok görüntünün bir arada görünür biçimde kesilip yapıştırıldığı eser.","A work where many images are visibly cut and pasted together."],
+"What is the core insight of hypermediacy?":["Tek bir görüntü mü, birçok kanal mı?","A single image or many channels?"],
+"A windowed computer interface is an example of:":["Ekranda aynı anda kaç pencere var?","How many windows are on screen at once?"],
+"“A digital encyclopedia adding search links and video” illustrates:":["Eski biçim korunuyor, üstüne yeni özellik ekleniyor.","The old form is kept, with new features added."],
+"“VR claiming to fix the limits of cinema” is which degree of remediation?":["Öncülün eksiklerini “onarma” iddiası en saldırgan derecedir.","Claiming to “repair” the predecessor is the most aggressive degree."],
+"A film adaptation that erases its literary source is which degree of remediation?":["Yeni medium eskiyi yutuyor ve dikişleri gizliyor.","The new medium swallows the old and hides the seams."],
+"Broadcast TV adopting TikTok's vertical framing is an example of:":["Bu sefer eski medya yeniden ödünç alıyor.","This time the old medium borrows from the new."],
+"The ‘Persistence of Linearity’ objection says remediation:":["Ata-torun sırası neyi dışarıda bırakır?","What does an ancestor-descendant line leave out?"],
+"The “Capaciousness” objection says that:":["Her şeyi açıklayan bir kavram neyi açıklar?","What does a concept that explains everything really explain?"],
+"The “capaciousness” objection to remediation argues that:":["Her medium remediation yapıyorsa kavramın ayırt edici gücü kalır mı?","If every medium remediates, does the concept still distinguish anything?"],
+"“If remediation looks at the victors, media archaeology excavates the ruins” is attributed to:":["Medya arkeolojisi alanının iki tanınmış adı.","Two well-known names of the media archaeology field."],
+"Which thinker argues that media, not humans, are the agents of history?":["Devre şemasını okumayı öneren materyalist.","The materialist who says to read the circuit diagram."],
+"Which thinker argues that the debris of commercial culture reveals more about an era than its monuments?":["Pasajlar ve panoramalar: “modası geçmiş olan”.","Arcades and panoramas: “the outmoded”."],
+"The 19th-century peep show returning as the smartphone screen illustrates:":["Eski düzen değişmiş biçimde geri dönüyor: düz çizgi değil, döne döne.","The old returns in a changed form: not a line, but turning around."],
+"“Affinity replaces sequence” describes:":["Yüzyıllar uzaktaki iki cihaz akraba olabilir.","Two devices centuries apart can be relatives."],
+"A topos is best defined as:":["“Bu gençliği yozlaştıracak” gibi sürekli tekrarlanan bir kalıp.","A recurring formula like “this will corrupt the youth”."],
+"Dead media prove that:":["Kazanan soy kaçınılmaz mıydı?","Was the winning lineage inevitable?"],
+"Imaginary media are:":["Hayali: kâğıtta kalan.","Imaginary: stayed on paper."],
+"Devices that were proposed but never built are called:":["Hiç yapılmadıysa “ölü” olamaz, çünkü hiç yaşamadı.","If never built it can't be “dead”, since it never lived."],
+"The Discursive Wing of media archaeology focuses on:":["Söylem: sözler, imgeler ve retorik.","Discourse: words, images and rhetoric."],
+"In media archaeology, the archive is:":["Arşiv her şeyi mi saklar, seçerek mi saklar?","Does the archive keep everything, or select?"],
+"According to the diagnostic matrix, what does media archaeology conceal?":["Arkeoloji kopuşlara bakar; peki istikrar nasıl kuruluyor?","Archaeology looks at breaks; so how does stability form?"],
+"The short-form feed combines:":["Video samimi ama etrafındaki arayüz kalabalık.","The video is intimate, but the interface around it is crowded."],
+"A short-form video app shows intimate, unedited front-camera footage inside a dense interface of captions, counters and buttons. This is best read as:":["İkili mantığın iki yüzü aynı ekranda.","Both sides of the double logic on the same screen."],
+"“AI will render human labor obsolete” should be treated as:":["Bu iddia matbaa ve telgraf için de söylendi mi?","Was this claim also made about print and the telegraph?"],
+"What does the failure of many technologies show, according to the slides?":["İyi çalışmak hayatta kalmak için yeterli mi?","Is working well enough to survive?"],
+"In the video call case, the archaeological lens identifies its ‘Materiality’ as:":["Görüntüyü teknik olarak ne sınırlar?","What technically limits the picture?"],
+"In the video call case, “The Shift” refers to:":["Uzaktan mevcudiyet vaadi ızgaralara ve panellere dönüştü.","The promise of presence at a distance turned into grids and panels."],
+"If the current tech landscape is one contingent outcome among many, it is:":["Teknik zorunluluk değilse, ne tür bir uzlaşmadır?","If not a technical necessity, what kind of settlement is it?"],
+"Recovering forgotten alternatives shows that the current tech landscape:":["Kaçınılmaz değilse, değiştirilebilir mi?","If it is not inevitable, can it be changed?"],
+"What is the political stake of recovering forgotten media alternatives?":["Bugün tek olasılık değilse, onu tartışabilir miyiz?","If today is not the only possibility, can we argue with it?"]
+}
+};
+</script>
+<script>
+GAME[5]={
+stages:[
+ {en:"Network Vocabulary & Math",tr:"Ağ sözlüğü ve matematiği",from:3,to:6,enemy:{en:"Node Spider",tr:"Düğüm Örümceği",spr:"spider"}},
+ {en:"Castells: Conjuncture & Informationalism",tr:"Castells: kesişim ve enformasyonalizm",from:7,to:9,enemy:{en:"The Paradigm Beast",tr:"Paradigma Canavarı",spr:"golem2"}},
+ {en:"Castells: Power, Flows & Work",tr:"Castells: güç, akışlar ve emek",from:10,to:14,enemy:{en:"The Switcher",tr:"Anahtarcı",spr:"bot4"}},
+ {en:"Van Dijk: The Nervous System",tr:"Van Dijk: toplumun sinir sistemi",from:15,to:18,enemy:{en:"Nerve Jelly",tr:"Sinir Denizanası",spr:"jelly"}},
+ {en:"Laws, Syntheses & Hazards",tr:"Yasalar, sentezler ve tehlikeler",from:19,to:26,enemy:{en:"Lock-in Dragon",tr:"Kilitlenme Ejderi",spr:"dragon2"}}
+],
+boss:{en:"The Platform Monopolist",tr:"Platform Tekelcisi",spr:"titan4"},
+extra:[
+{q:"In network vocabulary, a node is:",qt:"Ağ sözlüğünde düğüm (node) nedir?",o:["A discrete entity within the structure","The material transmitted","The structural connection between entities","The protocol"],e:"Düğüm yapı içindeki ayrık bir varlıktır: borsa, yayın stüdyosu ya da bir kişi olabilir.",p:5,h:["Ağdaki noktalar.","The points in a network."]},
+{q:"Under informationalism, capitalism can:",qt:"Enformasyonalizmde kapitalizm ne yapabilir?",o:["Circulate globally and operate as a single system in real time","Only enable mass production","Only serve national markets","Return to industrial energy"],e:"Enformasyonalizm sermayenin küresel dolaşmasını ve gerçek zamanlı tek bir sistem olarak işlemesini sağlar. Kitlesel üretim ve ulusal pazar sanayiciliğe aittir.",p:8,h:["Gerçek zamanlı ve küresel.","Real-time and global."]},
+{q:"“Information is the raw material” means that technologies:",qt:"“Information is the raw material” ne demektir?",o:["Do not merely use information; they act on it","Use only energy","Produce raw goods","Ignore data"],e:"Enformasyonel paradigmanın ilk özelliği: teknolojiler bilgiyi sadece kullanmaz, onun üzerinde işlem yapar.",p:9,h:["Hammadde, işlenen şeydir.","Raw material is what gets processed."]},
+{q:"“Because information is integral to all human activity, these technologies alter every domain” is:",qt:"“Bilgi tüm insan faaliyetinin parçası olduğundan bu teknolojiler her alanı değiştirir” hangisidir?",o:["Pervasive effects","Total flexibility","System convergence","Embedded networking logic"],e:"Bu, enformasyonel paradigmanın ikinci özelliği olan yaygın etkilerdir.",p:9,h:["Her yere yayılan etki.","An effect that spreads everywhere."]},
+{q:"“Embedded networking logic” means that it is materially possible to:",qt:"“Embedded networking logic” neyi maddi olarak mümkün kılar?",o:["Structure highly complex systems without a center","Centralize all power","Destroy organizations","Stop information flows"],e:"Ağ mantığı merkezsiz, çok karmaşık sistemler kurmayı maddi olarak mümkün kılar.",p:9,h:["Ağların bir merkezi var mı?","Do networks have a center?"]},
+{q:"According to Van Dijk, individuals, households, firms and states:",qt:"Van Dijk'a göre bireyler, haneler, firmalar ve devletler ne oldu?",o:["Did not dissolve; networks wrapped around them","Dissolved into networks","Were replaced by the space of flows","Became the Fourth World"],e:"Van Dijk'a göre temel birimler çözülmedi; ağlar onları gelişmiş bir bağ dokusu olarak sardı.",p:15,h:["Sinir sistemi bedeni yok eder mi?","Does a nervous system destroy the body?"]},
+{q:"Digital code, as a technical foundation of new media, enables:",qt:"Yeni medyanın teknik temeli olarak dijital kod neyi sağlar?",o:["Uniform processing of previously incompatible content","The convergence of sectors at different rates","Mental interactivity","Face-to-face richness"],e:"Dijital kod önceden uyumsuz içeriğin tek tip işlenmesidir: kusursuz depolama, sıkıştırma ve hızlı manipülasyon sağlar.",p:16,h:["Her şey aynı dile, 0 ve 1'e çevrilir.","Everything is translated into the same language of 0s and 1s."]},
+{q:"Integration, as a technical foundation of new media, means:",qt:"Yeni medyanın teknik temeli olarak entegrasyon ne demektir?",o:["Previously separate sectors (telecom, data, mass media) converge into a single infrastructure","Users integrate into communities","Data is deleted","Media become face-to-face"],e:"Entegrasyon telekom, veri ve kitle medyası gibi ayrı sektörlerin tek altyapıda birleşmesidir.",p:16,h:["Ayrı sektörler tek bir altyapıda.","Separate sectors in one infrastructure."]},
+{q:"According to Van Dijk, media should be compared:",qt:"Van Dijk'a göre medya nasıl karşılaştırılmalıdır?",o:["On specified dimensions rather than ranked as an absolute class","By ranking the best medium overall","Only by speed","Only by reach"],e:"Van Dijk medyanın mutlak bir sınıf olarak sıralanmamasını, erişim, zenginlik ve hız gibi belirli boyutlarda karşılaştırılmasını ister.",p:18,h:["“En iyi medium” diye bir şey var mı?","Is there such a thing as “the best medium”?"]},
+{q:"In which dimensions of interactivity do commercial platforms perform well?",qt:"Ticari platformlar etkileşimin hangi boyutlarında başarılıdır?",o:["Space and Time","Mental only","Behavioral and Mental","None"],e:"Ticari platformlar mekân ve zaman boyutlarında iyidir ama zihinsel çekirdekte sıklıkla başarısız olur.",p:17,h:["Cevap vermek ve anında cevap vermek kolaydır; zor olan anlamaktır.","Replying, and replying instantly, is easy; understanding is the hard part."]}
+],
+hints:{
+"Castells argues networks have:":["Castells'e göre ağlar eski yapı taşlarına ne yaptı?","For Castells, what did networks do to the old building blocks?"],
+"How does Van Dijk describe networks?":["Van Dijk bir beden metaforu kullanır.","Van Dijk uses a body metaphor."],
+"Who described networks as the “nervous system” coordinating the basic units of society?":["Castells'i düzelten düşünür.","The thinker who corrects Castells."],
+"Network theory is presented as a prerequisite for analyzing:":["Medyadan topluma: platform, algoritma, altyapı.","From media to society: platforms, algorithms, infrastructure."],
+"In network vocabulary, the actual material transmitted through a tie is the:":["Bağ üzerinden akan şey.","What runs along the tie."],
+"What is the caution about the network vocabulary?":["Aynı çizim bir molekülü de bir şirketi de anlatabilir.","The same drawing can describe a molecule or a corporation."],
+"Which concept says new nodes connect to already well-connected nodes?":["Herkes zaten popüler olanı tercih eder.","Everyone prefers what is already popular."],
+"Weak ties are valuable because they:":["Uzak tanıdıklar sana hangi bilgiyi getirir?","What information do distant acquaintances bring you?"],
+"“A tiny fraction of random long-distance connections produces extremely short path lengths” describes:":["“Dünya ne kadar küçük!”","“What a small world!”"],
+"Which is NOT one of Castells' three colliding processes?":["Üç süreç: kapitalizm, bilgi teknolojisi ve kültürel hareketler.","The three: capitalism, IT and cultural movements."],
+"For Castells, why is the network society not technologically determined?":["Süreçler birbirine neden oldu mu?","Did the processes cause each other?"],
+"Why is the network society not a product of technology alone, according to Castells?":["Teknoloji üç sürecin sadece biridir.","Technology is only one of three processes."],
+"Under informationalism, the core dynamic is:":["Bilgi neyin üzerine etki ediyor?","What does knowledge act upon?"],
+"Under industrialism, the source of productivity is:":["Fabrikaları ne çalıştırır?","What powers factories?"],
+"“Formerly distinct trajectories (computing, telecommunications, biology) merge into one integrated system” is:":["Birleşme, yakınsama.","Merging, converging."],
+"“Organizations can be reconfigured, reversed and rearranged without being destroyed” is:":["Yıkmadan yeniden şekil almak: esneklik.","Reshaping without breaking: flexibility."],
+"For Castells, a node is included in the network when:":["Ağ bir düğümü neden içinde tutar?","Why does a network keep a node?"],
+"A network can expand without limit, provided new nodes:":["Aynı dili konuşanlar ağa katılabilir.","Those who speak the same language can join."],
+"‘Switching’ is the capacity to:":["Anahtar iki hattı birbirine bağlar.","A switch connects two lines."],
+"“Programming” is the capacity to:":["Kuralları yazan kişi.","The one who writes the rules."],
+"Which capacity controls the connection points between networks?":["Ağdan ağa geçişi kim kontrol eder?","Who controls passing from one network to another?"],
+"In the space of flows, the global city as a process belongs to:":["Şehirler ağdaki merkezlerdir.","Cities are the centers of the network."],
+"Elite environments (Layer 3 of the space of flows) allow managerial elites to:":["Her yerde aynı otel, aynı havalimanı salonu.","The same hotel and airport lounge everywhere."],
+"Castells' concept for the material organization of time-sharing social practices that work through flows is:":["“Yerler mekânı”nın karşıtı.","The opposite of the “space of places”."],
+"The Fourth World refers to:":["Ağlar dışladıklarını sömürmez; ne yapar?","Networks don't exploit the excluded; what do they do?"],
+"Generic labor:":["Ölçülebilen iş kolayca değiştirilebilir.","Measurable work is easily replaced."],
+"A freelance task that can be measured, specified and outsourced to another country belongs to:":["Kendini yeniden programlayabilen emek mi, ölçülebilen emek mi?","Self-programmable labor, or measurable labor?"],
+"Van Dijk's ‘Levels of Analysis Matter’ warns against:":["Bir düzeydeki gözlemi başka bir düzeye taşımak.","Carrying an observation from one level to another."],
+"According to Van Dijk, integration occurs:":["Her katman aynı hızla mı birleşir?","Do all layers merge at the same speed?"],
+"According to the interactivity diagnostic, commercial platforms frequently fail at the:":["En içteki boyut: gerçekten anlamak.","The innermost dimension: truly understanding."],
+"The “Behavioral” dimension of interactivity asks:":["Birlikte hareket etmek ve rol değiştirmek.","Acting together and switching roles."],
+"Which dimension of interactivity asks whether we truly understand each other's meanings?":["Anlamlar ve niyetler zihinde.","Meanings and intentions are in the mind."],
+"Which comparison of media is correct according to Van Dijk's comparison?":["Yüz yüze konuşmanın ve internetin güçlü yanları farklıdır.","Face-to-face talk and the internet are strong in different ways."],
+"Which law says networking intensifies existing inequalities?":["Ağ var olan eğilimi büyütür.","The network amplifies an existing trend."],
+"Network externality produces:":["Herkes en büyük ağdaysa sen nereye gidersin?","If everyone is on the biggest network, where do you go?"],
+"Why does network externality lead to winner-take-most outcomes?":["Ağın değeri neyle artar?","What makes a network's value grow?"],
+"‘Mutual Shaping’ rejects both technological determinism and:":["Teknolojinin tamamen toplumsal bir kurgu olduğunu söyleyen uç görüş.","The extreme view that technology is purely a social construct."],
+"In the master matrix, Castells' methodological utility is:":["Castells büyük ölçekte, makro düzeyde çalışır.","Castells works at the large, macro scale."],
+"Synthesis I explains platform monopoly by combining:":["Bir yanda Castells'in güç kavramı, öbür yanda Van Dijk'ın yasası.","Castells' power concept on one side, Van Dijk's law on the other."],
+"The ‘double communications shortage’ results from:":["Sonsuz içerik, sınırlı dikkat.","Infinite content, limited attention."],
+"‘Descriptive inflation’ means:":["Her şeye “ağ” dersen bu kelime ne anlatır?","If you call everything a network, what does the word tell us?"],
+"According to the final slide, the analytical task is:":["Kod, anahtar ve dışarıda kalanlar.","Code, the switch, and those left out."],
+"According to the final slide, which is the real analytical task today?":["“Her şey bağlı” demek yetmez; kim kontrol ediyor?","Saying “everything is connected” is not enough; who controls it?"]
+}
+};
+</script>
+<script>
+GAME[6]={
+stages:[
+ {en:"Three Registers & Hypertext's Lineage",tr:"Üç kayıt ve hipermetnin soyu",from:3,to:5,enemy:{en:"Hyperlink Serpent",tr:"Köprü Yılanı",spr:"snake"}},
+ {en:"Aarseth: The Formal Register",tr:"Aarseth: biçimsel kayıt",from:7,to:11,enemy:{en:"The Cybertext Machine",tr:"Siber Metin Makinesi",spr:"bot5"}},
+ {en:"Jenkins: The Cultural Register",tr:"Jenkins: kültürel kayıt",from:12,to:15,enemy:{en:"The Everything Appliance",tr:"Her Şey Cihazı",spr:"box"}},
+ {en:"Bruns: The Organizational Register",tr:"Bruns: örgütsel kayıt",from:17,to:21,enemy:{en:"The Gatekeeper",tr:"Kapı Bekçisi",spr:"guard"}},
+ {en:"Synthesis, Debate & Applications",tr:"Sentez, büyük tartışma, uygulamalar",from:22,to:28,enemy:{en:"Unpaid Labor Golem",tr:"Ücretsiz Emek Golemi",spr:"golem3"}}
+],
+boss:{en:"The Enclosure Titan",tr:"Çit Titanı",spr:"titan5"},
+extra:[
+{q:"Which register asks what people take from the media they encounter?",qt:"Hangi kayıt insanların karşılaştıkları medyadan ne çıkardığını sorar?",o:["The Cultural Register (Jenkins)","The Formal Register (Aarseth)","The Organizational Register (Bruns)","The Political Register"],e:"Kültürel kayıt (Jenkins) insanların medyadan ne çıkardığını sorar. Biçimsel kayıt sistemi, örgütsel kayıt ortak yaratımın yapısını sorar.",p:3,h:["Kültür, insanların yaptıklarıyla ilgilidir.","Culture is about what people do."]},
+{q:"Which register asks what a system mechanically requires and permits?",qt:"Hangi kayıt sistemin mekanik olarak neyi gerektirdiğini ve neye izin verdiğini sorar?",o:["The Formal Register (Aarseth)","The Cultural Register (Jenkins)","The Organizational Register (Bruns)","The Archival Register"],e:"Biçimsel kayıt (Aarseth) sistemin mekanik gereksinimlerini sorar.",p:3,h:["Biçim, makinenin kendisi.","Form is the machine itself."]},
+{q:"Where does the slide say the 1990s trap structure repeats today?",qt:"Slayta göre 1990'ların tuzak yapısı bugün nerede tekrar ediyor?",o:["In claims about Blockchain and Generative AI","In claims about vinyl records","In claims about the printed book","Nowhere"],e:"Slayt aynı yapının bugün blokzincir ve üretken yapay zekâ iddialarında tekrarlandığını söyler.",p:5,h:["Bugünün en çok konuşulan iki “devrimci” teknolojisi.","Today's two most hyped “revolutionary” technologies."]},
+{q:"Choosing a pre-written path is, according to the slides:",qt:"Slaytlara göre önceden yazılmış bir yolu seçmek nedir?",o:["Not co-authorship","True co-authorship","Textonic work","Produsage"],e:"Önceden yazılmış bir yolu seçmek ortak yazarlık değildir; seçenekleri yazar kontrol eder.",p:11,h:["Yolu kim yazmıştı?","Who wrote the path?"]},
+{q:"According to Jenkins, true convergence happens:",qt:"Jenkins'e göre gerçek yakınsama nerede gerçekleşir?",o:["In consumers' brains and their social interactions","Inside a single device","In factories","In the servers"],e:"Gerçek yakınsama kültürel bir süreçtir: tüketicilerin beyinlerinde ve toplumsal etkileşimlerinde gerçekleşir.",p:13,h:["Cihazlarda değil, insanlarda.","Not in devices, but in people."]},
+{q:"In transmedia storytelling, each medium contributes:",qt:"Transmedya anlatıcılığında her medium ne katar?",o:["A distinct and non-redundant element","The same story again","Only advertising","Nothing new"],e:"Hikâye birden fazla medyaya dağılır ve her medium ayrı, tekrarsız bir öğe katar; bütün hikâye platformlar arasında izlenerek elde edilir.",p:15,h:["Her platform aynı şeyi mi tekrar eder, yoksa yeni bir parça mı ekler?","Does each platform repeat the same thing or add a new piece?"]},
+{q:"According to Bruns, applying industrial vocabulary to open-source software or wikis:",qt:"Bruns'a göre endüstriyel sözlüğü açık kaynak yazılıma ya da wikilere uygulamak ne doğurur?",o:["Guarantees analytical error","Explains them perfectly","Is required","Has no effect"],e:"Tüketici, ürün ve değer zinciri gibi endüstriyel terimler bu alanlara uygulanınca analitik hata kaçınılmazdır.",p:17,h:["Wikipedia'nın “bitmiş ürünü” ve “tüketicisi” var mı?","Does Wikipedia have a “finished product” and a “consumer”?"]},
+{q:"In “Open Participation”, quality is secured:",qt:"“Open Participation”da kalite nasıl sağlanır?",o:["Post-hoc, by correction and reversion","Pre-hoc, by institutional credentialing","By paid editors only","It is never secured"],e:"Açık katılımda kalite önceden yetkilendirmeyle değil, sonradan düzeltme ve geri almayla sağlanır.",p:19,h:["Önce kim olduğuna değil, sonra ne yaptığına bakılır.","It looks not at who you are first, but at what you did afterwards."]},
+{q:"In “Common Property”, what destroys motivation?",qt:"“Common Property” ilkesinde motivasyonu ne yok eder?",o:["Enclosing the resource","Permissive licensing","Reputational returns","Open participation"],e:"Çıktı ortak tutulur ve kullanıcılar itibar kazanır; kaynağı çitlemek (özelleştirmek) motivasyonu yok eder.",p:19,h:["Ortak bir şeyi birinin özel malı yapmak.","Turning a shared thing into someone's private property."]},
+{q:"In a networked environment, the useful journalistic function shifts:",qt:"Ağ ortamında yararlı gazetecilik işlevi nereye kayar?",o:["From gatekeeping to gatewatching","From gatewatching to gatekeeping","From curation to censorship","From the web to print"],e:"Darboğaz kaybolunca iş kapıda seçmekten bol çıktıyı küratörlemeye, bağlamlandırmaya ve açıklamaya kayar: gatekeeping → gatewatching.",p:21,h:["Kapıyı tutmak yerine kapıyı izlemek.","Watching the gate instead of keeping it."]},
+{q:"What can Aarseth's formal framework NOT establish?",qt:"Aarseth'in biçimsel çerçevesi neyi açıklayamaz?",o:["Meaning, community or ownership","What the system mechanically requires","User functions","Textons and scriptons"],e:"Aarseth sistemin ne gerektirdiğini açıklar ama anlamı, topluluğu ve sahipliği açıklayamaz.",p:22,h:["Makineye bakan biri insanların hissettiklerini görür mü?","Does someone looking at the machine see what people feel?"]},
+{q:"Why did Aarseth, Jenkins and Bruns overlook infrastructure, according to the slides?",qt:"Slaytlara göre Aarseth, Jenkins ve Bruns altyapıyı neden gözden kaçırdı?",o:["They wrote when the internet could plausibly be described as a common infrastructure","They did not know about servers","They were only interested in films","They rejected participation"],e:"Tarihsel kayma: internetin ortak bir altyapı gibi görülebildiği bir dönemde yazdılar; bugün ise özel yönetilen tescilli çitlemeler var.",p:23,h:["İnternet o zaman da bugünkü gibi özel şirketlerin elinde miydi?","Was the internet then in private hands as it is today?"]}
+],
+hints:{
+"Which register asks how collaborative creation is economically structured?":["Ekonomik yapı ve yönetişim: örgütlenme.","Economic structure and governance: organization."],
+"According to W06, “interactivity” is:":["Tek kelime, birçok farklı olgu.","One word, many different phenomena."],
+"Who coined ‘hypertext’ and proposed bidirectional links and transclusion?":["1965'te terimi bulan kişi.","The person who coined the term in 1965."],
+"What did Vannevar Bush's Memex propose?":["Mikrofilm ve insan belleği gibi çağrışımlar.","Microfilm and memory-like associations."],
+"The WWW's one-directional links without version preservation are described as:":["Başka türlü de yapılabilirdi; yani bu bir tercihti.","It could have been done otherwise; so it was a choice."],
+"The 1990s utopian trap ends with which step?":["Son adım teknolojiye büyük bir siyasi vaat ekler.","The last step adds a big political promise to the technology."],
+"Early hypertext theorists (Landow, Bolter) claimed the reader became:":["Yazar otoritesi çözülünce okur ne olur?","When authorial authority dissolves, what does the reader become?"],
+"What question does Aarseth ask?":["Aarseth anlamı atlar, makineye bakar.","Aarseth skips meaning and looks at the machine."],
+"In an ergodic text:":["Okurun eylemi metni değiştirir.","The reader's action changes the text."],
+"Traditional reading involves:":["Bir romanı okumak için sayfa çevirmek ne kadar çaba ister?","How much effort does turning pages take?"],
+"A ‘scripton’ is:":["Okurun ekranda gördüğü sonuç.","The result the reader sees on screen."],
+"In Aarseth's model, the strings of signs that exist in the text are called:":["Metinde depolanan malzeme: veritabanı.","The material stored in the text: the database."],
+"Equipping an avatar is Aarseth's:":["Öğeleri seçip düzenleyerek bileşimi değiştirmek.","Changing the composition by arranging elements."],
+"Following a hyperlink is which of Aarseth's user functions?":["Yol seçmek, keşfetmek.","Choosing a path, exploring."],
+"Editing a wiki page is which of Aarseth's user functions?":["Metne kalıcı yeni bir parça eklemek.","Adding a permanent new piece to the text."],
+"The ‘Conceptual’ critique of hypertext theory says it:":["Bir benzetmeyi gerçek yazılım tarifiyle karıştırmak.","Mixing up a comparison with a real software description."],
+"The “Empirical” critique of hypertext theory says that:":["Bağlantıları kim koydu ve kaç tane var?","Who placed the links, and how many are there?"],
+"Which critique says that early hypertext theory confused a metaphor with software?":["Kavramlarla ilgili eleştiri.","The critique about concepts."],
+"What question does Jenkins ask?":["Jenkins izleyicilerin gerçek davranışına bakar.","Jenkins looks at what audiences really do."],
+"Whose framework asks “What do audiences actually do with media across platforms?”":["Convergence Culture kitabının yazarı.","The author of Convergence Culture."],
+"Jenkins' ‘Black Box Fallacy’ is the expectation that convergence means:":["“Her şey cihazı” beklentisi.","The “everything appliance” expectation."],
+"In true convergence, delivery technologies:":["Cihazlar değişir; alışkanlıklar ne olur?","Devices change; what happens to habits?"],
+"For Jenkins, what migrates when delivery technologies become obsolete?":["Eski cihaz gider, insanların yaptığı şey kalır.","The old device goes, what people do remains."],
+"Which is NOT a required condition for collective intelligence?":["Koşullar düşük engel, arşiv, itibar ve ortak ilgi. Hangisi bir engel koyar?","The conditions are low barriers, archiving, reputation and shared interest. Which one adds a barrier?"],
+"Collective intelligence is attributed on the slides to:":["Slaytta parantez içinde adı geçen düşünür.","The thinker named in parentheses on the slide."],
+"Collective intelligence means:":["Grup, tek tek bireylerden fazlasını bilir.","The group knows more than any individual."],
+"As a commercial strategy, transmedia storytelling is:":["Şirket açısından izleyiciyi markaya bağlamak.","For a company: binding audiences to the brand."],
+"Bruns' term combining production and usage is:":["İki kelimenin birleşimi: production + usage.","A blend of two words: production + usage."],
+"What distinguishes a produsage network from the industrial chain?":["Endüstriyel zincir tek yönlüdür; produsage ağı nasıldır?","The industrial chain is one-way; what is a produsage network like?"],
+"In ‘Unfinished Artefacts’, the artefact is described as a:":["Üstüne tekrar tekrar yazılmış eski yazı yüzeyi.","An old writing surface written over again and again."],
+"“Fluid heterarchy” means:":["Otorite var ama sabit değil; nasıl kazanılır?","Authority exists but is not fixed; how is it earned?"],
+"‘Granularity’ means produsage works only if:":["Tek bir yazım hatası düzeltmek gibi küçük parçalar.","Small pieces, like fixing a single typo."],
+"“Equipotentiality” suggests that projects should:":["Kimin iyi katkı yapacağını önceden bilemezsin.","You can't know in advance who will contribute well."],
+"What can Jenkins' cultural framework NOT establish?":["Jenkins izleyiciye bakar; altyapıya bakar mı?","Jenkins looks at audiences; does he look at infrastructure?"],
+"What can Bruns' framework NOT settle?":["Yönetişimi açıklamak, adil olup olmadığını söylemek midir?","Is explaining governance the same as saying whether it's fair?"],
+"In what order should the questions in the final diagnosis be asked?":["Siyasi soru en sona kalır.","The political question comes last."],
+"Why can Bruns' framework not settle the question of exploitation?":["Sahiplik ve değer kimde sorusu ayrı bir sorudur.","Who owns and who captures value is a separate question."],
+"The shared blind spot of Aarseth, Jenkins and Bruns is:":["Sunucular, kullanım koşulları, sahiplik.","Servers, terms of service, ownership."],
+"In the ranked feed, the twist is that the traversal function is:":["Akışı yazar değil, bir yapay zekâ modeli üretiyor.","The feed is generated by an AI model, not an author."],
+"The contradiction of generative AI in Bruns' terms is that communal datasets:":["Ortak emekle oluşan veri kimin işine yarıyor ve karşılık veriliyor mu?","Whom does commonly built data serve, and is anything given back?"],
+"The final diagnostic of W06 asks:":["Katılımın gerçekleştiği yerin sahibi kim?","Who owns the place where participation happens?"],
+"According to the structural takeaways, participation is:":["Katılım doğal mı, öğrenilen bir beceri mi?","Is participation natural or a learned skill?"]
+}
+};
+</script>
+<script>
+GAME[7]={
+stages:[
+ {en:"The Virtual & Baudrillard's Lens",tr:"Sanalın iki soyu ve Baudrillard",from:3,to:7,enemy:{en:"The Counterfeit Mirror",tr:"Sahte Ayna",spr:"mirror"}},
+ {en:"Phases & Orders of Simulacra",tr:"İmgenin evreleri ve simulakr düzenleri",from:9,to:11,enemy:{en:"The Sorcery Mask",tr:"Büyü Maskesi",spr:"mask"}},
+ {en:"Deterrence, Implosion & Assessment",tr:"Caydırma, içe çöküş, değerlendirme",from:12,to:15,enemy:{en:"The Pollster",tr:"Anketçi",spr:"clerk3"}},
+ {en:"Ryan: Immersion & Interactivity",tr:"Ryan: içine dalma ve etkileşim",from:16,to:20,enemy:{en:"Immersion Kraken",tr:"Dalış Krakeni",spr:"kraken"}},
+ {en:"Interactive Narrative & Tests",tr:"Etkileşimli anlatı ve uygulama testleri",from:21,to:28,enemy:{en:"Danger Zone Wyrm",tr:"Tehlike Bölgesi Ejderi",spr:"dragon3"}}
+],
+boss:{en:"The Hyperreal Simulacrum",tr:"Hipergerçek Simulakr",spr:"titan6"},
+extra:[
+{q:"In Baudrillard's 1960s Marxist/semiotic work, objects are consumed:",qt:"Baudrillard'ın 1960'lardaki çalışmasında nesneler nasıl tüketilir?",o:["As signs in a system of differences, not as utilities","Only as utilities","As natural originals","As protocols"],e:"1960'larda Baudrillard nesnelerin fayda olarak değil, bir farklar sisteminde işaret olarak tüketildiğini söyler.",p:5,h:["Bir markayı işe yaradığı için mi, ne anlattığı için mi alırız?","Do we buy a brand for its use, or for what it signals?"]},
+{q:"The first phase of the image (Sacrament):",qt:"İmgenin ilk evresi (Sacrament) ne yapar?",o:["Reflects a profound reality","Masks the absence of a profound reality","Masks and denatures a profound reality","Bears no relation to any reality"],e:"Birinci evre derin bir gerçekliği yansıtır; iyi bir görünüştür.",p:9,h:["İlk evre gerçekliğe en yakın olanıdır.","The first phase is the one closest to reality."]},
+{q:"The fourth phase of the image (Pure Simulacrum):",qt:"İmgenin dördüncü evresi (Pure Simulacrum) ne yapar?",o:["Bears no relation to any reality whatsoever","Reflects a profound reality","Masks a profound reality","Masks the absence of a profound reality"],e:"Saf simulakr hiçbir gerçeklikle hiçbir ilişki taşımaz.",p:9,h:["“Saf” kopya: arkasında hiçbir şey yok.","A “pure” copy: nothing behind it at all."]},
+{q:"In the second order of simulacra, what happens to the question of the “original”?",qt:"Simulakrın ikinci düzeninde “orijinal” sorusuna ne olur?",o:["It vanishes into equivalence between series","It becomes more important","It is proven by the copy","It returns as a model"],e:"Makineler özdeş nesneler ürettiği için “orijinal” sorusu seriler arası eşdeğerlikte kaybolur.",p:11,h:["Fabrikada üretilen iki özdeş şişeden hangisi orijinal?","Of two identical factory bottles, which is the original?"]},
+{q:"What is the persistent misreading of Baudrillard?",qt:"Baudrillard'ın sürekli yanlış okunması nedir?",o:["That he says nothing is real, or that a real world hides beneath an illusion","That he studied models","That he wrote about theme parks","That he defined the hyperreal"],e:"Baudrillard'ın “hiçbir şey gerçek değil” dediğini ya da The Matrix gibi gizli bir gerçek dünya olduğunu söylediğini sanmak yanlıştır; The Matrix 2. evre dünya görüşüne dayanır.",p:14,h:["Popüler bir bilimkurgu filmi yanlış örnek olarak verilir.","A popular science-fiction film is given as the wrong example."]},
+{q:"Ryan's reversal argues that:",qt:"Ryan'ın tersine çevirmesi neyi savunur?",o:["Immersion deserves defense rather than dismissal as naive","Interactivity is always emancipatory","Immersion is naive illusion","Representation has collapsed"],e:"Post-yapısalcı ortodoksi sürükleyiciliği naif bulup küçümsemişti; Ryan sürükleyiciliğin savunulması gerektiğini söyler.",p:16,h:["Küçümsenen kutbu savunmak.","Defending the pole that was looked down on."]},
+{q:"Spatial immersion depends on:",qt:"Mekânsal içine dalma neye bağlıdır?",o:["Descriptive density and consistency of detail","Precise management of information","Character development","Speed of the interface"],e:"Mekânsal içine dalma betimleme yoğunluğuna ve ayrıntı tutarlılığına bağlıdır.",p:18,h:["Bir yeri canlı hissetmek için ne gerekir?","What do you need to feel that a place is alive?"]},
+{q:"Emotional immersion is defined as:",qt:"Duygusal içine dalma nasıl tanımlanır?",o:["Investment in the fate of persons and affective consequences","The desire to know what happens next","The sense of inhabiting a geography","Rule-following in a game"],e:"Duygusal içine dalma kişilerin kaderine ve duygusal sonuçlara yatırımdır; karakter gelişimine bağlıdır.",p:18,h:["Karakterlere bağlanmak.","Getting attached to characters."]},
+{q:"According to the slides, a video game may achieve:",qt:"Slaytlara göre bir video oyunu neyi başarabilir?",o:["Strong spatial immersion but weak temporal immersion","Only emotional immersion","No immersion at all","Equal immersion in all dimensions"],e:"Uygulama notu: üç boyut birbirinden bağımsız değişir; bir oyun güçlü mekânsal ama zayıf zamansal içine dalma sağlayabilir.",p:18,h:["Boyutlar birbirinden bağımsız değişir.","The dimensions vary independently."]},
+{q:"What is the “immutable law” of interactive narrative?",qt:"Etkileşimli anlatının “değişmez yasası” nedir?",o:["The more freedom the participant has, the harder it is to sustain a shaped aesthetic experience","More graphics solve the problem","Freedom always improves the story","Authors are no longer needed"],e:"Katılımcıya ne kadar özgürlük verilirse biçimlendirilmiş deneyimi sürdürmek o kadar zorlaşır; işlem gücü ya da grafik bunu çözmez.",p:21,h:["Özgürlük ile yazarlı biçim arasında bir takas vardır.","There is a trade-off between freedom and authored shape."]},
+{q:"The “Procedural” strategy in large narrative games:",qt:"Büyük anlatı oyunlarındaki “Procedural” strateji nedir?",o:["Generates story from systemic interactions without authored scripts","Constrains freedom at key moments","Distributes story to be found in any order","Lets users act against their character's logic"],e:"Prosedürel strateji hikâyeyi yazılı senaryo olmadan sistem etkileşimlerinden üretir ve yazarlı estetik biçimi tamamen feda eder.",p:27,h:["Hikâyeyi yazar değil, sistemin kuralları üretir.","The rules of the system make the story, not an author."]},
+{q:"The “Dissonance” strategy in large narrative games:",qt:"Büyük anlatı oyunlarındaki “Dissonance” stratejisi nedir?",o:["Permits users to act in ways their character logically wouldn't, accepting incoherence","Generates story procedurally","Constrains freedom at fixed junctures","Distributes story in the environment"],e:"Uyumsuzluk stratejisi kullanıcının karakterin mantığına aykırı davranmasına izin verir; mekanik özgürlük için anlatı tutarsızlığını kabul eder.",p:27,h:["Karakterin mantığı ile oyuncunun eylemi uyuşmuyor.","The character's logic and the player's actions don't match."]},
+{q:"Step 2 of the midterm framework, “Map the Mechanics”, asks whether we analyze:",qt:"Ara sınav çerçevesinin 2. adımı “Map the Mechanics” neyi sorar?",o:["A text-as-machine (Ryan) or a deterrence loop (Baudrillard)","Optical or scholastic virtual","Phase 2 or Phase 3","Hot or cool media"],e:"İkinci adım, makine olarak metin mi (Ryan) yoksa caydırma döngüsü mü (Baudrillard) incelendiğini sorar.",p:28,h:["Mekanizma: Ryan'ın makinesi mi, Baudrillard'ın döngüsü mü?","The mechanism: Ryan's machine or Baudrillard's loop?"]}
+],
+hints:{
+"What is the stated goal of comparing Baudrillard and Ryan?":["Amaç taraf tutmak değil, anlaşmazlığı netleştirmek.","The goal is not to take sides, but to clarify the disagreement."],
+"Which lineage of the virtual is Baudrillard's domain?":["Aynanın arkasındaki görüntü.","The image behind a mirror."],
+"“The oak in the acorn” illustrates:":["Palamut henüz meşe değil ama meşe olma gücü taşıyor.","The acorn is not yet an oak but has the power to become one."],
+"What does cultural criticism systematically confuse, according to the slides?":["“Sanal” kelimesinin iki farklı kökenini düşün.","Think of the two different origins of the word “virtual”."],
+"In 1981 (Simulacra and Simulation) Baudrillard argues:":["İşaret ile temsil ettiği şey arasındaki bağ.","The link between a sign and what it represents."],
+"Classical critique assumes that:":["Eleştirmen maskeyi indirir; altında ne olduğunu varsayar?","The critic removes the mask; what does she assume is beneath?"],
+"Who argued that “there is nothing behind the mask” anymore?":["Simulakr kuramcısı.","The theorist of simulacra."],
+"The hyperreal is ‘more real than real’ because it:":["Kusursuz, kazasız, şartnameye göre.","Flawless, accident-free, made to specification."],
+"In Baudrillard's reversal of the Borges fable, the territory becomes:":["Harita önce gelirse toprağa ne kalır?","If the map comes first, what is left of the territory?"],
+"In Baudrillard's medical case, simulation means:":["Belirtiler gerçek ama hastalık yok.","The symptoms are real but there is no disease."],
+"Dissimulation means:":["Saklamak: olanı yokmuş gibi göstermek.","Hiding: making what exists seem absent."],
+"Which phase of the image ‘masks the absence of a profound reality’?":["Görünüş olmayı oynayan, büyülü evre.","The magic phase that plays at being an appearance."],
+"Phase 2 of the image (Malefice):":["Kötü bir görünüş: gerçek var ama bozuluyor.","A bad appearance: reality exists but is distorted."],
+"Why does critique become impossible after the rupture?":["Arkasında hiçbir şey yokken maskeyi indirmek ne işe yarar?","What good is unmasking when nothing is behind the mask?"],
+"In Baudrillard's phases of the image, where does the break happen?":["Gerçekliği maskelemekten gerçekliğin yokluğunu maskelemeye geçiş.","The move from masking reality to masking its absence."],
+"The governing logic of the second order of simulacra is:":["Sanayi dönemi: makineler aynı ürünü tekrar tekrar üretir.","Industrial era: machines produce the same item again and again."],
+"Stucco imitating marble is an example of:":["Doğal bir orijinali taklit etmek.","Imitating a natural original."],
+"In the third order of simulacra, reality is:":["Genetik kod ve kamuoyu yoklamaları.","Genetic codes and opinion polls."],
+"In the Engine of Deterrence, the theme park functions to:":["Sahte olan, geri kalanın “gerçek” görünmesini sağlar.","The fake makes the rest look “real”."],
+"What is the analytical rule of the engine of deterrence?":["Bir şey “istisna” ilan edilince, başka yerde ne gözden kaçar?","When something is declared an “exception”, what slips by elsewhere?"],
+"A theme park openly presents itself as artificial. Using Baudrillard's engine of deterrence, the analyst should ask:":["Parkın dışındaki şehir ne kadar gerçek?","How real is the city outside the park?"],
+"In the implosion of meaning, what happens at Step 4 ‘The Fact’?":["Ölçüm aracı ölçtüğü gerçeği üretir.","The measuring tool produces the reality it measures."],
+"“Implosion” means that media:":["Anlam sürekli dolaşınca ne olur?","What happens when meaning circulates endlessly?"],
+"Which is listed as something that SURVIVES from Baudrillard?":["Modeller nüfuslardan önce gelir.","Models come before populations."],
+"Umberto Eco's approach to the hyperreal is:":["Eco belirli yerlere, belirli kurumlara gider.","Eco goes to specific places and institutions."],
+"What is Eco's methodological rule?":["Evrensel kuram fazladan ne açıklıyor?","What more does the universal theory explain?"],
+"Following Eco's rule, when should a universal theory be preferred over a bounded empirical claim?":["Büyük kuram ancak fazlasını gösterirse kazanır.","The big theory wins only if it shows more."],
+"The post-structuralist orthodoxy rejected by Ryan:":["Bir kutbu naif, diğerini özgürleştirici saymıştı.","It saw one pole as naive and the other as liberating."],
+"For Ryan, immersion and interactivity are:":["Sadece VR'a mı ait, yoksa tüm metinlere mi?","Do they belong only to VR, or to all texts?"],
+"For Ryan, the two poles of all textual experience are:":["Bir dünyada bulunmak ve eylemde bulunmak.","Being in a world and acting."],
+"Ryan's ‘recentering’ is based on:":["Olası dünyalar.","Possible worlds."],
+"The old model of immersion (suspension of disbelief) fails to explain:":["Eleştirel aklımızı kapattıysak tutarsızlık bizi neden rahatsız ediyor?","If our critical sense is off, why do inconsistencies bother us?"],
+"How does Ryan's recentering model explain immersion?":["Okur hikâye dünyasını geçici olarak gerçek dünya yapar.","The reader temporarily makes the story world the real one."],
+"Temporal immersion depends on:":["Merak: neyin ne zaman söyleneceği.","Suspense: what is revealed, and when."],
+"What are the core questions of the “Text as Machine” pole?":["Makine kurallarla, seçeneklerle çalışır.","A machine runs on rules and options."],
+"In Ryan's map of interactivity, the ‘Danger Zone’ is:":["İçeriden ve olayları değiştirerek.","From inside, and changing the events."],
+"Which quadrant of interactivity is “the danger zone” in Ryan's model?":["Katılımcı dünyanın sakini olarak ne olacağını değiştirebiliyor.","The participant, as an inhabitant, can change what happens."],
+"For deepfakes, Baudrillard's view is that:":["Sahte ile gerçeği ayırmak artık kimin onayına kalıyor?","Whose stamp now separates fake from real?"],
+"For the “unedited” filter aesthetic, Ryan's analysis says that marks of non-production are:":["Kötü ışık ve gelişigüzel kadraj da bir üslup olabilir.","Bad lighting and casual framing can also be a style."],
+"The ‘Archive’ strategy in large narrative games:":["Hikâye parçaları ortama dağılmış, istediğin sırayla bulunur.","Story pieces are spread around, found in any order."],
+"The “Theme Park” strategy in large narrative games:":["Önemli anlarda özgürlük kısılır.","Freedom is restricted at key moments."],
+"Step 3 of the midterm framework, ‘Define the Threat’, asks whether the threat is:":["2. evre ile 3. evre arasındaki farkı hatırla.","Remember the difference between phase 2 and phase 3."]
+}
+};
+</script>
+<script>
 /* k: d=Tanım, c=Karşılaştırma, l=Liste, p=Kim ne dedi, u=Slayt uyarısı */
 const KC={};
 KC[1]=[
@@ -1941,7 +2517,7 @@ const LV={easy:"Kolay",medium:"Orta",hard:"Zor"};
 Object.keys(SIM).forEach(l=>SIM[l].forEach((q,i)=>{q.a=0;q.id="s"+l+i;QS[q.id]=q}));
 
 /* ---------- ui state (nothing is stored between visits) ---------- */
-const ui={week:1,nq:"",jump:null,cw:null,pw:1,pm:"match",m:null,tf:null,g:null,t:null,tw:1,gq:"",tipw:1,ezw:1};
+const ui={gm:null,week:1,nq:"",jump:null,cw:null,pw:1,pm:"match",m:null,tf:null,g:null,t:null,tw:1,gq:"",tipw:1,ezw:1};
 
 /* ---------- shared bits ---------- */
 function weekChips(cur,act){
@@ -2229,9 +2805,243 @@ function glBody(){
   return n?`<div class="stack">${out}</div>`:`<p class="empty">Sonuç yok.</p>`;
 }
 
+/* ---------- game ---------- */
+const SPR={
+hero:{w:12,c:{h:"#3b2a20",s:"#f1c27d",e:"#1b1b1b",m:"#b5523b",b:"#2f6fb3",k:"#c9a227",w:"#fff7e0",p:"#2b2b40",o:"#5a3a22"},g:[
+"...hhhhhh...","..hhhhhhhh..","..hssssssh..","..ssessess..","..ssssssss..","...ssmmss...","....ssss....","..bbbbbbbb..",
+".sbbbbbbbbs.",".sbbkkkkbbs.",".sbbkwwkbbs.","...bkkkkb...","...bbbbbb...","...pp..pp...","...pp..pp...","..oo....oo.."]},
+goblin:{w:14,c:{g:"#5fa04e",y:"#f4e04d",k:"#1b1b1b",m:"#3a1e1e",w:"#ffffff",r:"#8f3b76",N:"#f4e04d"},g:[
+"..............","g...gggggg...g","gg.gggggggg.gg",".gggggggggggg.","..ggyyggyygg..","..ggykggykgg..","..gggggggggg..","...gmmmmmmg...",
+"...gmwmwmmg...","....gggggg....","...rrrrrrrr...","..grrNNNNrrg..","..grrNNNNrrg..","...rrrrrrrr...","...gg....gg...","..ggg....ggg.."]},
+straw:{w:14,c:{t:"#5b3a1e",f:"#d9b77e",e:"#1b1b1b",k:"#7a5230",m:"#7a5230",y:"#e8c547",c:"#a63d3d",p:"#3f7d4e",w:"#6b4a2b"},g:[
+"....tttttt....","..tttttttttt..","....ffffff....","....fekkef....","....ffffff....","....fmmmmf....","..y.ffffff.y..","yyyccccccccyyy",
+"y.cccccccccc.y","..cccppccccc..","..cccccccccc..","...cccccccc...","....yy..yy....","....yy..yy....","...y.y..y.y...","......ww......"]},
+bot:{w:14,c:{a:"#e04040",r:"#888888",m:"#8a96a3",d:"#1f2a36",c:"#ff4d4d",l:"#5ad1ff",n:"#c9a227"},g:[
+"......aa......","......rr......","..mmmmmmmmmm..","..mddddddddm..","..mdcddddcdm..","..mddddddddm..","..mdlllllldm..","..mmmmmmmmmm..",
+".....mmmm.....",".mmmmmmmmmmmm.","mm.mmnnnnmm.mm","mm.mmnccnmm.mm","mm.mmnnnnmm.mm","...mmmmmmmm...","...mm....mm...","..mmm....mmm.."]},
+ice:{w:14,c:{i:"#e6f6ff",I:"#ffffff",b:"#10324a",m:"#10324a",w:"#3c8fd1",j:"#7fb7d9"},g:[
+"......ii......",".....iiii.....","....iiiiii....","...iiIiiiii...","..iiiiiiiiii..","..iibiiiibii..",".iiiiiiiiiiii.",".iiiimmmmiiii.",
+"wwwwwwwwwwwwww","wjjjjjjjjjjjjw",".jjjjjjjjjjjj.","..jjjjjjjjjj..","..jjjjjjjjjj..","...jjjjjjjj...","....jjjjjj....","......jj......"]},
+ghost:{w:14,c:{g:"#cfc6e8",b:"#2a2140",o:"#2a2140",s:"#8a6a3a",w:"#f3e6c4"},g:[
+"....gggggg....","..gggggggggg..",".gggggggggggg.",".ggbbggggbbgg.",".ggbbggggbbgg.",".gggggggggggg.",".ggggoooogggg.","ssssgggggggggg",
+"swwsgggggggggg","swwsgggggggggg","ssssgggggggggg",".gggggggggggg.",".gggggggggggg.",".gg.ggg.ggg.g.",".g...g...g....",".............."]},
+titan:{w:16,c:{y:"#f2c230",r:"#6b2d5c",e:"#ffd34d",k:"#1a1a1a",w:"#ffffff",m:"#2a0f22",d:"#4a1f40",t:"#57c7ff"},g:[
+"...y...yy...y...","...yy.yyyy.yy...","...yyyyyyyyyy...","..rrrrrrrrrrrr..",".rrrrrrrrrrrrrr.",".rreeerrrreeerr.",".rrekerrrrekerr.",".rrrrrrrrrrrrrr.",
+".rrrwmwmwmwmrrr.",".rrrmmmmmmmmrrr.","..rrrrrrrrrrrr..","dddrrrrrrrrrrddd","dd.rrrttttrrr.dd","dd.rrrttttrrr.dd","...rrrrrrrrrr...","...rrr....rrr...","..rrrr....rrrr.."]}
+};
+SPR.hero={w:16,c:{w:"#dfe6ee",p:"#c0392b",h:"#9aa5b1",v:"#2a2f36",g:"#c9a227",a:"#8e99a6",H:"#6c7682",b:"#6b4a2b",c:"#2f6fb3",y:"#f2c230",t:"#6c7682",o:"#4a3a2a"},g:[
+".......ww.......","...pp..ww.......","....pp.ww.......","....hhhwwhhh....","...hhhhwwhhhh...","...hvvvwwvvvh...","...hhhhwwhhhh...","....hhhwwhhh....",
+".....gggggg.....","...aaaHbbHaaa...","..aaaaHbbHaaaa..","..aa.cccccc.aa..","..aa.cccccc.aa..",".....ccyycc.....",".....tttttt.....",".....tt..tt.....",".....tt..tt.....","....ooo..ooo...."]};
+SPR.golem={w:14,c:{r:"#a0673d",y:"#ffcf4d",m:"#3a2414",c:"#7a4a2a"},g:[
+"....rrrrrr....","...rrrrrrrr...","...rryrryrr...","...rrrrrrrr...","....rmmmmr....",".rrrrrrrrrrrr.","rrrrrcrrcrrrrr","rr.rrrrrrrr.rr","rr.rrcrrrrr.rr","rr.rrrrrrrr.rr","...rrrrrrrr...","...rrr..rrr...","...rrr..rrr...","..rrrr..rrrr.."]};
+SPR.dragon={w:16,c:{h:"#e8d9a8",g:"#3f8f5a",y:"#ffd34d",m:"#2a1a1a",w:"#ffffff",v:"#2e6b44",b:"#c9e6a0"},g:[
+"..h..........h..","..hh........hh..","...gggggggggg...","..gggyggggyggg..","..gggggggggggg..","...gmmmmmmmmg...","...gwgwgwgwgg...","v...gggggggg...v",
+"vv.gggbbbbggg.vv","vvvgggbbbbgggvvv","vv.gggbbbbggg.vv","v...gggggggg...v",".....gg..gg.....","....ggg..ggg...."]};
+SPR.eye={w:14,c:{p:"#6b3fa0",w:"#ffffff",i:"#2f9e8f",k:"#111111",t:"#c9a227"},g:[
+"....pppppp....","..pppppppppp..",".pppwwwwwwppp.","ppwwwiiiiwwwpp","ppwwiikkiiwwpp","ppwwiikkiiwwpp","ppwwwiiiiwwwpp",".pppwwwwwwppp.","..pppppppppp..","....pppppp....","...t..t..t....","..t..t..t..t.."]};
+SPR.spider={w:16,c:{b:"#3a3a4a",l:"#2a2a33",y:"#ff4d4d",r:"#c9a227"},g:[
+"l.....bbbb.....l",".l...bbbbbb...l.","..l.bbybbybb.l..","lll.bbbbbbbb.lll","...lbbbbbbbbl...","llllbbbbbbbbllll","...lbbbrrbbbl...","..l.bbbrrbbb.l..",".l...bbbbbb...l.","l.....bbbb.....l"]};
+SPR.jelly={w:14,c:{j:"#f08fc0",k:"#2a1030",m:"#2a1030",t:"#c0609a"},g:[
+"....jjjjjj....","..jjjjjjjjjj..",".jjjjjjjjjjjj.",".jjkkjjjjkkjj.",".jjjjjjjjjjjj.",".jjjjmmmmjjjj.","jjjjjjjjjjjjjj","t.t.t.t.t.t.t.","t.t.t.t.t.t.t.",".t.t.t.t.t.t.t",".t.t.t.t.t.t.t","t.t.t.t.t.t.t."]};
+SPR.snake={w:14,c:{g:"#4caf50",y:"#ffeb3b",r:"#e53935",b:"#c5e1a5"},g:[
+"......ggggg...",".....gggyggg..",".....ggggggrr.","......gggg..r.","......ggg.....",".....ggg......","....ggg.......","...gggg.......","..ggggbbbbg...",".ggggbbbbbbgg.","ggggggggggggg.",".ggggggggggg.."]};
+SPR.clerk={w:12,c:{h:"#3b2a20",s:"#f1c27d",g:"#222222",m:"#b5523b",c:"#6d7b8a",k:"#e8dcc0",p:"#2b2b40",o:"#5a3a22"},g:[
+"...hhhhhh...","..hhhhhhhh..","..hssssssh..","..sggssggs..","..ssssssss..","...ssmmss...","....ssss....","..cccccccc..",".scccccccks.",".scccccckks.",".scccccckks.","...cccccc...","...pp..pp...","...pp..pp...","..oo....oo.."]};
+SPR.box={w:14,c:{b:"#3d4652",s:"#8fd3ff",y:"#111111",m:"#111111",k:"#f2c230"},g:[
+"..............",".bbbbbbbbbbbb.",".bsssssssssbb.",".bsyssssyssbb.",".bsssmmmsssbb.",".bsssssssssbb.",".bbbbbbbbbbbb.",".bkbkbkbkbbbb.",".bbbbbbbbbbbb.","..bb......bb..",".bbb......bbb."]};
+const SPRV={
+ golem2:["golem",{r:"#4f6d8f",y:"#7ff0ff",m:"#1b2a3a",c:"#9ec3e6"}],golem3:["golem",{r:"#7c7466",y:"#ff6b5b",m:"#2b2622",c:"#c9a227"}],guard:["golem",{r:"#5d6d7e",y:"#ffd34d",c:"#c0392b"}],
+ clerk2:["clerk",{c:"#8a6a3a",h:"#222222",k:"#9aa5b1"}],clerk3:["clerk",{c:"#b03a48",k:"#ffffff"}],sleeper:["clerk",{c:"#6c5ce7",p:"#4b3fb0",g:"#3b2a20",k:"#a29bfe"}],zombie:["clerk",{s:"#8fbf7f",c:"#5d6b4f",h:"#3d3d3d",g:"#c0392b",k:"#5d6b4f"}],
+ hydra:["dragon",{g:"#2f7f8f",v:"#1f5f6b",b:"#a0e6e0"}],dragon2:["dragon",{g:"#8f3b3b",v:"#5e2424",b:"#e6b0a0"}],dragon3:["dragon",{g:"#d46a1a",v:"#8a3e0a",b:"#ffd79a"}],
+ oracle:["eye",{}],ranker:["eye",{p:"#1f2a36",i:"#e04040",t:"#5ad1ff"}],
+ mirror:["ice",{i:"#d8dde3",I:"#ffffff",b:"#222222",m:"#222222",w:"#9aa5b1",j:"#b8c1cc"}],
+ kraken:["jelly",{j:"#c0503a",t:"#8a3a2a",k:"#ffe14d"}],card:["box",{b:"#c9b98f",s:"#fff7e0",y:"#333333",m:"#333333",k:"#333333"}],
+ bot2:["bot",{m:"#b0855a",d:"#2a1d10",c:"#ffd34d",l:"#ffd34d",n:"#6b4a2b"}],bot3:["bot",{m:"#5a6a7a",d:"#0b1a2a",c:"#57c7ff",l:"#57c7ff"}],bot4:["bot",{m:"#2f6fb3",c:"#f2c230",l:"#f2c230"}],bot5:["bot",{m:"#3f7d4e",d:"#0b2010",c:"#7dff7d",l:"#7dff7d"}],
+ ghost2:["ghost",{g:"#b8d8ff",b:"#1a2a40",o:"#1a2a40"}],ghost3:["ghost",{g:"#ffe0a0",b:"#4a2a00",o:"#4a2a00"}],mask:["ghost",{g:"#f2c230",b:"#3a1a00",o:"#3a1a00",s:"#8a3e0a",w:"#ffe9a8"}],
+ goblin2:["goblin",{g:"#c0703a",r:"#2f6fb3",N:"#ffffff"}],
+ leviathan:["titan",{r:"#1f4f8f",d:"#143a6b",t:"#ffffff",y:"#5ad1ff"}],titan2:["titan",{r:"#1f3a5f",d:"#142840",t:"#7dff7d",y:"#57c7ff"}],titan3:["titan",{r:"#4a4a4a",d:"#333333",t:"#ff6b3b",y:"#c9a227"}],
+ titan4:["titan",{r:"#1d5c4a",d:"#143f33",t:"#f2c230"}],titan5:["titan",{r:"#7a4a2a",d:"#5a3520",t:"#c0392b",y:"#9aa5b1"}],titan6:["titan",{r:"#c03a8a",d:"#8a2462",t:"#ffe14d",y:"#57c7ff"}],
+ examiner:["titan",{r:"#b8860b",d:"#7a5a08",t:"#ffffff",y:"#e04040",e:"#ffffff"}]
+};
+Object.entries(SPRV).forEach(([k,[b,c]])=>{SPR[k]={w:SPR[b].w,g:SPR[b].g,c:Object.assign({},SPR[b].c,c)}});
+function px(k,cls){const s=SPR[k],h=s.g.length;let r="";
+  s.g.forEach((row,y)=>{for(let x=0;x<row.length;x++){const ch=row[x];if(ch!==".")r+=`<rect x="${x}" y="${y}" width="1.02" height="1.02" fill="${s.c[ch]}"/>`}});
+  return `<svg class="spr ${cls||""}" viewBox="0 0 ${s.w} ${h}" shape-rendering="crispEdges" aria-hidden="true">${r}</svg>`}
+
+const GB={hp:100,hit:20,combo:10,heal:30,enemy:{hp:120,dmg:15},boss:{hp:200,dmg:20}};
+const GJ={
+ tut:{i:"📖",tr:"Konu anlatımı",en:"Tutorial",dtr:"Bu aşamanın konu anlatımını notlardan tekrar açar. Soruyu cevaplamadan önce bilgiyi gözden geçirebilirsin. Bölüm sonu canavarında ve karışık bölümde, o anki sorunun ait olduğu aşamanın notlarını açar.",den:"Reopens this stage's tutorial from the notes so you can review before answering. Against a boss and in the mixed mode, it opens the notes of the stage the current question comes from."},
+ elim:{i:"✂️",tr:"Yarı yarıya",en:"50:50",dtr:"Bu sorudaki iki yanlış şıkkı eler. Geriye doğru cevap ve bir yanlış şık kalır.",den:"Removes two wrong options from this question, leaving the correct answer and one wrong option."},
+ shield:{i:"🛡️",tr:"Kalkan",en:"Shield",dtr:"Bir sonraki yanlış cevabında hasar almazsın. Kalkan sadece bir yanlışı engeller, sonra kaybolur.",den:"You take no damage on your next wrong answer. It blocks one wrong answer, then it is gone."}
+};
+function gPool(w){
+  const G=GAME[w],seen=new Set(),out=[];
+  const add=q=>{if(seen.has(q.q))return;seen.add(q.q);out.push(q)};
+  W[w-1].mcq.forEach(add);(W[w-1].mcq2||[]).forEach(add);
+  Object.values(SIM).flat().filter(q=>q.w===w).forEach(add);
+  G.extra.forEach((q,i)=>{if(!q.id){q.id="g"+w+"_"+i;q.a=0;q.w=w;QS[q.id]=q}add(q)});
+  const skip=new Set(G.skip||[]);
+  return out.filter(q=>!skip.has(q.q)).map(q=>{if(!q.h)q.h=G.hints[q.q]||null;return q});
+}
+const GMIX={easy:{tr:"Kolay",php:150,hp:300,dmg:15},medium:{tr:"Orta",php:150,hp:400,dmg:20},boss:{en:"The Grand Examiner",tr:"Büyük Sınav Canavarı",spr:"examiner"}};
+function gMixPool(l){
+  W.forEach(w=>{if(!GP[w.n])GP[w.n]=gPool(w.n)});
+  const ok=new Set(W.flatMap(w=>GP[w.n].map(q=>q.q)));
+  const src=l==="easy"?[...W.flatMap(w=>w.mcq),...SIM.easy]:[...W.flatMap(w=>w.mcq2||[]),...SIM.medium,...SIM.hard,...W.flatMap(w=>GAME[w.n].extra)];
+  const seen=new Set();return src.filter(q=>{if(!ok.has(q.q)||seen.has(q.q))return false;seen.add(q.q);if(!q.h)q.h=GAME[q.w].hints[q.q]||null;return true}).map(q=>q.id)}
+function gNewMix(l){const c=GMIX[l];
+  ui.gm={mixed:true,lv:l,w:0,si:0,php:c.php,pmax:c.php,jok:{tut:2,elim:2,shield:2},shield:false,streak:0,phase:"tut",wrong:[],modal:null,stats:{ok:0,bad:0}}}
+const GP={};
+function gStageOf(w,p){const S=GAME[w].stages;let i=S.findIndex(s=>p>=s.from&&p<=s.to);if(i<0)i=S.findIndex(s=>p<=s.to);return i<0?S.length-1:i}
+function gSecs(w,si){const st=GAME[w].stages[si],wk=W[w-1];
+  return wk.sec.map((s,i)=>[s,i]).filter(([s])=>parseInt(s.p,10)>=st.from&&parseInt(s.p,10)<=st.to).map(([s,i])=>section(wk,s,i)).join("")}
+function gNew(w){if(!GP[w])GP[w]=gPool(w);
+  ui.gm={w,si:0,php:GB.hp,pmax:GB.hp,jok:{tut:2,elim:2,shield:2},shield:false,streak:0,phase:"map",wrong:[],modal:null,stats:{ok:0,bad:0}}}
+function gBegin(){const G=ui.gm;
+  if(G.mixed){const c=GMIX[G.lv];Object.assign(G,{boss:true,ehp:c.hp,emax:c.hp,edmg:c.dmg,pool:shuffle(gMixPool(G.lv)),qi:-1,streak:0,phase:"fight",fx:"",log:""});gNext();return}
+  const boss=G.si>=GAME[G.w].stages.length,cfg=boss?GB.boss:GB.enemy;
+  const ids=GP[G.w].filter(q=>boss||gStageOf(G.w,q.p)===G.si).map(q=>q.id);
+  Object.assign(G,{boss,ehp:cfg.hp,emax:cfg.hp,edmg:cfg.dmg,pool:shuffle(ids),qi:-1,streak:0,phase:"fight",fx:"",log:""});gNext()}
+function gNext(){const G=ui.gm;G.qi++;
+  if(G.qi>=G.pool.length){const last=G.cur;G.pool=shuffle(G.pool);if(G.pool[0]===last&&G.pool.length>1)G.pool.push(G.pool.shift());G.qi=0}
+  G.cur=G.pool[G.qi];G.opts=shuffle([0,1,2,3]);G.elim=[];G.ans=null;G.hint=false;G.tr=false;G.fx="";G.log=""}
+function gEnemy(){const G=ui.gm;if(G.mixed)return GMIX.boss;const st=GAME[G.w];return G.boss?st.boss:st.stages[G.si].enemy}
+function hpBar(v,max,cls){const pc=Math.max(0,Math.round(v/max*100));return `<div class="hp ${cls}"><i style="width:${pc}%"></i><span>${Math.max(0,v)}/${max}</span></div>`}
+
+function vGame(){
+  const G=ui.gm;
+  if(!G)return gMenu();
+  let body="";
+  if(G.phase==="map")body=gMap();
+  else if(G.phase==="tut")body=gTut();
+  else if(G.phase==="fight")body=gFight();
+  else if(G.phase==="won")body=gWon();
+  else if(G.phase==="lost")body=gLost();
+  else if(G.phase==="done")body=gDone();
+  return `<div class="gm">${body}</div>${G.modal?gModal():""}`;
+}
+function gMenu(){
+  return `<div class="stack"><h1>Oyun</h1><p class="lead">Her hafta bir macera. Her aşamada önce konu anlatımını oku, sonra düşmanla savaş: doğru cevap düşmana vurur, yanlış cevap sana. Haftanın sonunda bölüm sonu canavarı seni bekliyor.</p></div>
+  <div class="gm-hero-row">${px("hero","sbig")}<div class="stack"><p class="lbl">Kurallar</p><ul class="pts">
+    <li>Canın <b>${GB.hp}</b>. Her doğru cevap düşmana <b>${GB.hit}</b> hasar verir.</li>
+    <li>Üst üste <b>3 doğru</b> yaparsan kombo açılır ve sonraki vuruşların <b>+${GB.combo}</b> hasar verir. Yanlış yapınca kombo sıfırlanır.</li>
+    <li>Normal düşman <b>${GB.enemy.dmg}</b>, bölüm sonu canavarı <b>${GB.boss.dmg}</b> hasar vurur. Her aşamayı geçince <b>+${GB.heal} can</b> kazanırsın.</li>
+    <li>Her haftada 3 joker var ve her biri <b>2 kez</b> kullanılır: 📖 Konu anlatımı, ✂️ Yarı yarıya, 🛡️ Kalkan.</li>
+    <li>Her sorunun altında <b>İpucu</b> tuşu var. Cevabı söylemez, Türkçe ve İngilizce yön gösterir.</li></ul></div></div>
+  <p class="lbl" style="margin-top:8px">Hafta seç</p>
+  <div class="gm-weeks">${W.map(w=>{const ok=!!GAME[w.n];return `<button class="gm-wk ${ok?"":"off"}" ${ok?`data-act="gmweek" data-v="${w.n}"`:"disabled"}>
+    <span class="lbl">${wl(w.n)}</span><b>${w.tr}</b><small>${ok?GAME[w.n].stages.length+" aşama + bölüm sonu canavarı":"Yakında"}</small></button>`}).join("")}
+    <div class="gm-wk gm-mix"><span class="lbl">Karışık</span><b>Tüm haftalar</b><small>Tek düşman: ${GMIX.boss.en}</small>
+      <div class="row"><button class="btn sm lv-easy" data-act="gmmix" data-v="easy">Kolay</button><button class="btn sm lv-medium" data-act="gmmix" data-v="medium">Orta</button></div></div></div>
+  <p class="muted" style="font-size:.85rem">Site hiçbir şey kaydetmez; sayfayı kapatırsan ilerleme sıfırlanır.</p>`;
+}
+function gTop(){const G=ui.gm;
+  return `<div class="gm-top"><span class="lbl">${G.mixed?"Karışık · "+GMIX[G.lv].tr+" · tüm haftalar":wl(G.w)+" · "+W[G.w-1].tr}</span>
+    <div class="row">${hpBar(G.php,G.pmax,"me")}<button class="btn sm ghost" data-act="gmquit">${G.mixed?"Bölümden çık":"Haftadan çık"}</button></div></div>`}
+function gMap(){const G=ui.gm,st=GAME[G.w];
+  const items=st.stages.map((s,i)=>({n:i+1,en:s.en,tr:s.tr,e:s.enemy,i})).concat([{n:"★",en:st.boss.en,tr:"Bütün aşamalardan sorular",e:st.boss,i:st.stages.length}]);
+  return `${gTop()}<h2>Harita</h2><div class="gm-map">${items.map(it=>{const s=it.i<G.si?"done":it.i===G.si?"now":"lock";
+    return `<div class="gm-node ${s}">${px(it.e.spr)}<div><span class="lbl">${it.n==="★"?"Bölüm sonu":"Aşama "+it.n}${s==="done"?" · ✓ yenildi":""}</span><b>${it.en}</b><small>${it.tr}</small><small class="muted">Düşman: ${it.e.en} · ${it.e.tr}</small></div></div>`}).join("")}</div>
+    <div class="row"><button class="btn primary" data-act="gmtut">${G.si>=st.stages.length?"Bölüm sonu canavarına git":"Aşama "+(G.si+1)+"'e başla"}</button></div>`}
+function gTut(){const G=ui.gm;
+  if(G.mixed){const c=GMIX[G.lv],b=GMIX.boss;return `${gTop()}<div class="panel stack gm-tut"><p class="lbl">Karışık bölüm · ${c.tr}</p><div class="gm-hero-row">${px(b.spr,"sbig")}<div><h2>${b.en}</h2><p class="tr">${b.tr}</p>
+    <p>Bu canavar <b>7 haftanın hepsinden</b> soru sorar. ${c.tr==="Kolay"?"Kolay seviyede sorular Test 1 ve kolay simülasyon sorularından gelir.":"Orta seviyede sorular Test 2, orta ve zor simülasyon sorularından ve oyunun ek sorularından gelir."}</p>
+    <p>Canın <b>${c.php}</b>. Canavarın canı <b>${c.hp}</b>, vuruşu <b>${c.dmg}</b>. Ara can takviyesi yok; jokerlerin her biri 2 kez kullanılır. 📖 jokeri o sorunun haftasındaki notları açar.</p></div></div>
+    <div class="row"><button class="btn primary" data-act="gmfight">Savaşa başla</button></div></div>`}
+  const st=GAME[G.w],boss=G.si>=st.stages.length;
+  if(boss)return `${gTop()}<div class="panel stack gm-tut"><p class="lbl">Bölüm sonu</p><div class="gm-hero-row">${px(st.boss.spr,"sbig")}<div><h2>${st.boss.en}</h2><p class="tr">${st.boss.tr}</p>
+    <p>Bu canavar haftanın <b>bütün aşamalarından</b> soru sorar. Canı ${GB.boss.hp}, vuruşu ${GB.boss.dmg}. Takıldığın soruda 📖 jokeri o sorunun konusunu açar.</p></div></div>
+    <ul class="pts">${st.stages.map((s,i)=>`<li><b>${s.en}</b> · ${s.tr}</li>`).join("")}</ul>
+    <div class="row"><button class="btn primary" data-act="gmfight">Savaşa başla</button></div></div>`;
+  const s=st.stages[G.si];
+  return `${gTop()}<div class="panel stack gm-tut"><p class="lbl">Aşama ${G.si+1} · Konu anlatımı</p><h2>${s.en}</h2><p class="tr">${s.tr}</p>
+    <p class="muted">Önce bu notları oku. Düşman: <b>${s.enemy.en}</b> (${s.enemy.tr}).</p></div>
+    <div class="gm-notes">${gSecs(G.w,G.si)}</div>
+    <div class="row gm-sticky"><button class="btn primary" data-act="gmfight">Savaşa başla</button></div>`}
+function gFight(){const G=ui.gm,q=QS[G.cur],e=gEnemy(),a=G.ans;
+  const combo=G.streak>=3;
+  const opts=G.opts.map((oi,k)=>{if(G.elim.includes(oi))return "";let cls="";
+    if(a!=null){if(oi===q.a)cls="ok";else if(oi===a)cls="bad"}
+    return `<button class="opt ${cls}" data-act="gmans" data-v="${oi}" ${a!=null?"disabled":""}><span class="k">${"ABCD"[k]}</span>${q.o[oi]}</button>`}).join("");
+  const jk=Object.keys(GJ).map(k=>`<button class="gm-j ${k==="shield"&&G.shield?"on":""}" data-act="gmjinfo" data-v="${k}" title="${GJ[k].tr}"><span>${GJ[k].i}</span><small>${GJ[k].tr}</small><em>${G.jok[k]}</em></button>`).join("");
+  return `${gTop()}
+  <div class="gm-arena">
+    <div class="gm-side">${px("hero",G.fx==="hurt"?"hurt":G.fx==="hit"?"atk":"")}<b>Sen</b>${hpBar(G.php,G.pmax,"me")}
+      <small class="gm-tags">${combo?'<span class="tag fire">🔥 Kombo +'+GB.combo+'</span>':G.streak?'<span class="tag">Seri '+G.streak+'/3</span>':""}${G.shield?'<span class="tag">🛡️ Kalkan açık</span>':""}</small></div>
+    <div class="gm-vs">${G.log?`<span class="gm-log ${G.fx}">${G.log}</span>`:"VS"}</div>
+    <div class="gm-side">${px(e.spr,G.fx==="hit"?"hit":"")}<b>${e.en}</b><small class="muted">${e.tr}${G.boss?" · bölüm sonu":""}</small>${hpBar(G.ehp,G.emax,"foe")}</div>
+  </div>
+  <div class="panel stack gm-q">
+    <div class="row" style="justify-content:space-between"><span class="lbl">${G.mixed?"Karışık":G.boss?"Bölüm sonu":"Aşama "+(G.si+1)} · ${ref(q.w,q.p)}</span><button class="btn sm ghost" data-act="gmtr">${G.tr?"TR'yi gizle":"TR"}</button></div>
+    <p class="qtext">${q.q}</p>${G.tr?`<p class="qtr">${q.qt}</p>`:""}
+    <div class="opts">${opts}</div>
+    ${a!=null?`<div class="fb ${a===q.a?"ok":"bad"}"><b>${a===q.a?"Doğru!":"Yanlış. Doğru cevap: "+q.o[q.a]}</b> ${q.e}</div>
+      <div class="row"><button class="btn primary" data-act="gmnext">${G.ehp<=0?"Düşman yenildi →":G.php<=0?"Devam →":"Sonraki soru →"}</button></div>`:
+    `<div class="row"><button class="btn sm ${G.hint?"":"ghost"}" data-act="gmhint">💡 İpucu</button></div>
+     ${G.hint?(q.h?`<div class="gm-hint"><p><span class="lbl">TR</span> ${q.h[0]}</p><p><span class="lbl">EN</span> ${q.h[1]}</p></div>`:`<div class="gm-hint"><p class="muted">Bu soru için ipucu yok.</p></div>`):""}`}
+  </div>
+  <div class="gm-jokers"><span class="lbl">Jokerler</span><div class="row">${jk}</div></div>`}
+function gWon(){const G=ui.gm,st=GAME[G.w],e=gEnemy();
+  return `${gTop()}<div class="panel stack gm-res">${px(e.spr,"dead")}<h2>${e.en} yenildi!</h2>
+    <p>${G.healed?`Ödül: <b>+${G.healed} can</b> 💚 Canın şimdi ${G.php}/${G.pmax}.`:`Ödül: +${GB.heal} can, ama canın zaten doluydu 💪`}</p>
+    <div class="row"><button class="btn primary" data-act="gmon">${G.si+1>=st.stages.length?"Bölüm sonu canavarına geç":"Sonraki aşama"}</button><button class="btn ghost" data-act="gmmap">Harita</button></div></div>`}
+function gLost(){const G=ui.gm,e=gEnemy();
+  return `${gTop()}<div class="panel stack gm-res">${px("hero","dead")}<h2>Yenildin…</h2>
+    <p>${e.en} bu sefer kazandı. Notları bir kez daha gözden geçirip tekrar dene. Aşamaya tam canla başlarsın; kalan jokerlerin aynen durur.</p>
+    <div class="row"><button class="btn primary" data-act="gmretry">Aşamayı tekrar dene</button>${G.mixed?"":'<button class="btn ghost" data-act="gmrestart">Haftayı baştan başla</button>'}</div></div>`}
+function gDone(){const G=ui.gm,st=G.mixed?{boss:GMIX.boss}:GAME[G.w];
+  const wr=G.wrong.filter((id,i,a)=>a.indexOf(id)===i);
+  return `<div class="panel stack gm-res">${px("hero","sbig")}<p class="lbl">${G.mixed?"Karışık · "+GMIX[G.lv].tr+" tamamlandı":wl(G.w)+" tamamlandı"}</p><h2>${st.boss.en} yenildi! 🏆</h2>
+    <p>Doğru: <b>${G.stats.ok}</b> · Yanlış: <b>${G.stats.bad}</b></p>
+    <div class="row"><button class="btn primary" data-act="gmrestart">${G.mixed?"Tekrar oyna":"Haftayı tekrar oyna"}</button><button class="btn ghost" data-act="gmquit">Oyun menüsü</button></div></div>
+    ${wr.length?`<h2>Yanlış yaptıkların</h2><div class="review">${wr.map(id=>{const q=QS[id];return `<div class="rv bad"><span class="q">${q.q}</span>
+      <span><span class="lbl">Doğru cevap</span><br>${q.o[q.a]}</span><span class="muted">${q.e}</span>${refLink(q.w,q.p)}</div>`}).join("")}</div>`:`<p class="muted">Hiç yanlış yapmadın, harika!</p>`}`}
+function gModal(){const G=ui.gm,m=G.modal;
+  if(m==="tutview"){const q=QS[G.cur],ww=G.mixed?q.w:G.w,si=G.boss?gStageOf(ww,q.p):G.si,s=GAME[ww].stages[si];
+    return `<div class="gm-modal" role="dialog" aria-label="Konu anlatımı"><div class="gm-box wide"><div class="row" style="justify-content:space-between"><div><p class="lbl">📖 Konu anlatımı · ${wl(ww)} · Aşama ${si+1}</p><h2>${s.en}</h2></div><button class="btn sm" data-act="gmclose">Kapat ✕</button></div>
+      <div class="gm-notes">${gSecs(ww,si)}</div><div class="row"><button class="btn primary" data-act="gmclose">Soruya dön</button></div></div></div>`}
+  const k=m.slice(2),j=GJ[k],left=G.jok[k];
+  let can=left>0&&G.ans==null,why="";
+  if(left<=0)why="Bu jokerin bu hafta için hakkı bitti.";
+  else if(G.ans!=null)why="Joker cevap vermeden önce kullanılır.";
+  else if(k==="elim"&&G.elim.length){can=false;why="Bu soruda zaten kullandın."}
+  else if(k==="shield"&&G.shield){can=false;why="Kalkan zaten açık."}
+  return `<div class="gm-modal" role="dialog" aria-label="${j.tr}"><div class="gm-box"><p class="lbl">Joker · kalan hak ${left}/2</p><h2>${j.i} ${j.tr} <small class="muted">· ${j.en}</small></h2>
+    <p><span class="lbl">TR</span> ${j.dtr}</p><p><span class="lbl">EN</span> ${j.den}</p>${why?`<p class="muted">${why}</p>`:""}
+    <div class="row"><button class="btn primary" data-act="gmjuse" data-v="${k}" ${can?"":"disabled"}>Kullan</button><button class="btn ghost" data-act="gmclose">Vazgeç</button></div></div></div>`}
+function gAnswer(v){const G=ui.gm,q=QS[G.cur];if(G.ans!=null)return;G.ans=v;
+  if(v===q.a){const dmg=GB.hit+(G.streak>=3?GB.combo:0);G.streak++;G.ehp-=dmg;G.fx="hit";G.log=`−${dmg}${dmg>GB.hit?" 🔥":""}`;G.stats.ok++}
+  else{G.streak=0;G.stats.bad++;G.wrong.push(G.cur);
+    if(G.shield){G.shield=false;G.fx="block";G.log="🛡️ Engellendi"}else{G.php-=G.edmg;G.fx="hurt";G.log=`−${G.edmg}`}}}
+const GA={
+  gmweek:t=>{gNew(+t.dataset.v);render();window.scrollTo(0,0)},
+  gmquit:()=>{ui.gm=null;render();window.scrollTo(0,0)},
+  gmmap:()=>{ui.gm.phase="map";render();window.scrollTo(0,0)},
+  gmtut:()=>{ui.gm.phase="tut";render();window.scrollTo(0,0)},
+  gmfight:()=>{gBegin();render();window.scrollTo(0,0)},
+  gmans:t=>{gAnswer(+t.dataset.v);render()},
+  gmnext:()=>{const G=ui.gm;
+    if(G.ehp<=0){if(G.boss){G.phase="done"}else{const b=G.php;G.php=Math.min(G.pmax,G.php+GB.heal);G.healed=G.php-b;G.phase="won"}}
+    else if(G.php<=0)G.phase="lost";else gNext();
+    render();if(G.phase!=="fight")window.scrollTo(0,0)},
+  gmon:()=>{const G=ui.gm;G.si++;G.phase="tut";render();window.scrollTo(0,0)},
+  gmretry:()=>{const G=ui.gm;G.php=G.pmax;G.shield=false;G.phase="tut";render();window.scrollTo(0,0)},
+  gmrestart:()=>{const G=ui.gm;if(G.mixed)gNewMix(G.lv);else gNew(G.w);render();window.scrollTo(0,0)},
+  gmmix:t=>{gNewMix(t.dataset.v);render();window.scrollTo(0,0)},
+  gmhint:()=>{ui.gm.hint=!ui.gm.hint;render()},
+  gmtr:()=>{ui.gm.tr=!ui.gm.tr;render()},
+  gmjinfo:t=>{ui.gm.modal="j:"+t.dataset.v;render()},
+  gmclose:()=>{ui.gm.modal=null;render()},
+  gmjuse:t=>{const G=ui.gm,k=t.dataset.v,q=QS[G.cur];if(G.jok[k]<=0||G.ans!=null)return;G.jok[k]--;
+    if(k==="elim"){G.elim=shuffle([0,1,2,3].filter(i=>i!==q.a)).slice(0,2);G.modal=null}
+    else if(k==="shield"){G.shield=true;G.modal=null}
+    else G.modal="tutview";
+    render()}
+};
+
 /* ---------- router ---------- */
-const VIEWS={home:vHome,cards:vCards,notes:vNotes,practice:vPractice,tips:vTips,test:vTest,people:vPeople,glossary:vGlossary};
-const NAV=[["home","Ana sayfa"],["cards","Kartlar"],["notes","Notlar"],["practice","Alıştırma"],["tips","Sınav tüyoları"],["test","Test"],["people","Kim kimdir"],["glossary","Sözlük"]];
+const VIEWS={home:vHome,cards:vCards,notes:vNotes,practice:vPractice,tips:vTips,test:vTest,people:vPeople,glossary:vGlossary,game:vGame};
+const NAV=[["home","Ana sayfa"],["cards","Kartlar"],["notes","Notlar"],["practice","Alıştırma"],["tips","Sınav tüyoları"],["test","Test"],["game","Oyun"],["people","Kim kimdir"],["glossary","Sözlük"]];
 let cur="home";
 function renderNav(){$("#rail").innerHTML=NAV.map(([k,l])=>`<a href="#${k}" ${cur===k?'aria-current="page"':""}>${l}</a>`).join("")}
 function render(){
@@ -2294,6 +3104,7 @@ const A={
   tnext:()=>{const T=ui.t;T.tr=false;if(T.i+1<T.qs.length){T.i++}else{T.done=true}render();window.scrollTo(0,0)},
   tquit:()=>{ui.t=null;render()}
 };
+Object.assign(A,GA);
 document.addEventListener("click",e=>{if(cur==="cards"&&e.target.closest('#rail a[href="#cards"]')){ui.cw=null;render();window.scrollTo(0,0);return}const t=e.target.closest("[data-act]");if(!t||t.tagName==="INPUT")return;const f=A[t.dataset.act];if(f){e.preventDefault();f(t,e)}});
 document.addEventListener("input",e=>{
   if(e.target.id==="note-q"){ui.nq=e.target.value;$("#note-body").innerHTML=notesBody()}
