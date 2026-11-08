@@ -370,6 +370,26 @@ mark{background:var(--brass-soft);color:inherit;border-radius:3px;padding:0 2px}
 .fm-x p+p{padding-top:12px;border-top:1px dashed var(--line)}
 .fm-who{align-self:flex-start;font:500 .72rem var(--f-mono);padding:2px 8px;border-radius:10px;background:var(--plum-soft);color:var(--ink)}
 @media (max-width:560px){.fm-grid{grid-template-columns:1fr}}
+
+.tk-steps{display:flex;flex-direction:column;gap:8px}
+.tk-step{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.tk-step p{margin:2px 0 0;color:var(--muted);font-size:.92rem}
+.tk-n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font:700 .9rem var(--f-mono)}
+.tk-tips p{margin:4px 0}
+.tk-ex{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.tk-q{font-size:.95rem;line-height:1.55}
+.tk-q mark{background:var(--brass-soft);color:inherit;padding:0 3px;border-radius:3px}
+.tk-o{margin:0;padding-left:22px;font-size:.92rem}.tk-o b{color:var(--good)}
+.tk-x{background:var(--sunk);border-radius:8px;padding:8px 10px;font-size:.92rem}
+.tk-dict{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.tk-g{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.tk-g h3{margin:0 0 6px;font-size:1rem}
+.tk-g ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.tk-g li{display:flex;flex-wrap:wrap;gap:2px 8px;padding:6px 0;border-top:1px dashed var(--line)}
+.tk-g li:first-child{border-top:0}
+.tk-t{font-weight:600}
+.tk-c{color:var(--ink)}.tk-c small{color:var(--muted);font-size:.8rem}
+@media (max-width:560px){.tk-ex,.tk-dict{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -15389,6 +15409,50 @@ const FM={
 };
 </script>
 <script>
+/* Soru taktiği: hızlı sözlük. [kavram, ipucu (EN), ipucu (TR), tuzak ikilisi mi, sayfa] */
+const TD={
+1:[
+ {who:"Lister et al.",i:[["Digitality","numbers","sayılar",0,8],["Interactivity","user input","kullanıcı girdisi",0,8],["Hypertextuality","links","bağlantılar",0,8],["Dispersal","decentralized","merkezsiz",0,8],["Virtuality","immersive","sürükleyici",0,8]]},
+ {who:"Lisa Gitelman",i:[["Protocols","habits, norms","alışkanlık, kural",0,16],["Medium","socially realized","toplumsal yapı",0,15],["Emergence","negotiation","pazarlık",1,18],["Breakdown","violation","ihlal",1,18]]},
+ {who:"Raymond Williams",i:[["Cultural Materialism","social intentions","toplumsal niyet",1,12],["Mobile Privatization","","",0,12]]},
+ {who:"Brian Winston",i:[["Supervening Social Necessity","demand, pulled","talep, çekilir",1,13],["Suppression of Radical Potential","brake, patents","fren, patent",1,13],["Prototype","invention","icat",0,13],["Diffusion","spreads","yayılır",0,13]]},
+ {who:"Genel kavramlar",i:[["Technological Determinism","technology drives","teknoloji belirler",1,12],["Conflation Error","two senses mixed","iki anlam karışır",0,5],["Supersession","replacement","yerini alma",0,19],["Archive Asymmetry","durable / fragile","dayanıklı / kırılgan",0,22],["Recurrence Loop","utopia & panic","ütopya ve panik",0,23]]}
+],
+2:[
+ {who:"Harold Innis",i:[["Time-biased","heavy, durable","ağır, dayanıklı",1,7],["Space-biased","light, portable","hafif, taşınır",1,7],["Monopoly of Knowledge","elite control","elit kontrolü",0,6],["Staples Thesis","commodity","ticari ürün",0,5],["Balance","collapse","çöküş",0,7],["A Plea for Time","presentism","şimdicilik",0,9]]},
+ {who:"Marshall McLuhan",i:[["Extensions","body","beden",0,10],["The Medium is the Message","structure, not content","içerik değil yapı",0,11],["Somnambulism","sleepwalking","uyurgezerlik",0,12],["Hot media","high definition, full","yüksek tanım, dolu",1,16],["Cool media","low definition, gaps","düşük tanım, boşluk",1,16],["Mechanical Age","print, assembly line","matbaa, montaj hattı",1,15],["Electric Age","instant, automation","anlık, otomasyon",1,15]]},
+ {who:"McLuhan · Tetrad",i:[["Enhances","amplifies","güçlendirir",1,16],["Obsolesces","pushes out","gözden düşürür",1,16],["Retrieves","brings back","geri getirir",1,16],["Reverses","extreme, flips","uçta tersine döner",1,16]]}
+],
+3:[
+ {who:"Lev Manovich · 5 ilke",i:[["Numerical Representation","numbers, code","sayı, kod",0,7],["Modularity","separate parts","ayrı parçalar",1,7],["Automation","without humans","insansız",0,8],["Variability","many versions","çok sürüm",1,9],["Transcoding","cultural ↔ computer layer","kültür ↔ bilgisayar katmanı",0,10]]},
+ {who:"Lev Manovich · diğer",i:[["Database","no order, list","sırasız liste",1,15],["Narrative","cause and effect","neden-sonuç",1,16],["Paradigm","stored choices","depolanan seçenekler",1,17],["Syntagm","user path","kullanıcının yolu",1,17],["Montage","visible cut","görünür kesik",1,14],["Compositing","invisible seam","görünmez dikiş",1,14],["Teleaction","remote, real time","uzaktan, anında",0,14],["Real-Time Screen","intervene","müdahale",0,11],["Schema","rules","kurallar",0,18]]}
+],
+4:[
+ {who:"Bolter & Grusin",i:[["Remediation","borrowing","ödünç alma",0,6],["Immediacy","transparent, forget","şeffaf, unutturur",1,8],["Hypermediacy","windows, multiple","pencere, çoklu",1,9],["Double Logic","authentic experience","sahici deneyim",0,7],["Refashioning","fixes, improves","düzeltir",0,10],["Reverse Remediation","old borrows new","eski yeniden alır",0,11]]},
+ {who:"Huhtamo & Parikka",i:[["Media Archaeology","ruins, forgotten","harabe, unutulmuş",0,14],["Topos (Topoi)","recurring","tekrar eden",0,17],["Dead Media","abandoned","terk edilmiş",1,18],["Imaginary Media","never built","hiç yapılmamış",1,18]]},
+ {who:"Dört kök düşünür",i:[["Foucault","conditions of possibility","olanak koşulları",0,15],["Kittler","circuit diagram","devre şeması",0,15],["Benjamin","the outmoded, debris","modası geçmiş",0,15],["Zielinski","deep time","derin zaman",0,15]]}
+],
+5:[
+ {who:"Manuel Castells",i:[["Network Society","networks replace units","ağlar yerini alır",0,3],["Informationalism","knowledge on knowledge","bilgi bilgiye etki",1,8],["Space of Flows","elite, global","elit, küresel",1,12],["Space of Places","local","yerel",1,12],["Programming","rules, goals","kural, hedef",1,11],["Switching","connects networks","ağları bağlar",1,11],["Fourth World","excluded","dışlanmış",0,14],["Generic Labor","replaceable","değiştirilebilir",1,14],["Self-programmable Labor","adapts","uyum sağlar",1,14]]},
+ {who:"Jan van Dijk",i:[["Nervous System","coordinates","koordine eder",0,15],["Network Externality","value grows","değer artar",0,19],["Trend Amplification","inequality","eşitsizlik",0,19],["Mental Interactivity","understanding","anlamak",0,17]]},
+ {who:"Ağ matematiği",i:[["Weak Ties (Granovetter)","bridges, new info","köprü, yeni bilgi",0,6],["Small Worlds (Watts & Strogatz)","short paths","kısa yollar",0,6],["Preferential Attachment (Barabási & Albert)","popular gets more","popüler büyür",0,6]]}
+],
+6:[
+ {who:"Espen Aarseth",i:[["Cybertext / Ergodic","non-trivial effort","önemsiz olmayan çaba",0,8],["Texton","stored signs","depolanan işaret",1,9],["Scripton","shown to reader","okura görünen",1,9],["Traversal Function","engine","motor",0,9],["Exploration","choosing a path","yol seçmek",1,10],["Configuration","arranging","düzenlemek",1,10],["Textonic","adding","eklemek",1,10]]},
+ {who:"Henry Jenkins",i:[["Convergence Culture","across platforms","platformlar arası",0,13],["Black Box Fallacy","one device","tek cihaz",0,13],["Participatory Culture","participants","katılımcılar",0,14],["Collective Intelligence (Lévy)","pool knowledge","bilgiyi birleştir",0,14],["Transmedia Storytelling","unique pieces","farklı parçalar",0,15]]},
+ {who:"Axel Bruns",i:[["Produsage","user + producer","kullanıcı + üretici",0,17],["Unfinished Artefacts","never finished","hiç bitmez",0,19],["Fluid Heterarchy","earned authority","kazanılan otorite",0,19],["Equipotentiality","anyone can contribute","herkes katkı yapabilir",0,20],["Granularity","small tasks","küçük parçalar",0,20],["Gatewatching","curating","küratörlük",0,21]]},
+ {who:"Hipermetnin soyu",i:[["Memex (Bush)","microfilm, associative trails","mikrofilm, çağrışım izi",0,4],["Hypertext (Nelson)","bidirectional, transclusion","iki yönlü",1,4],["WWW (Berners-Lee)","one-directional","tek yönlü",1,4]]}
+],
+7:[
+ {who:"Jean Baudrillard",i:[["Simulation","signs of what one lacks","olmayanın işareti",1,7],["Dissimulation","hides what one has","olanı gizler",1,7],["Hyperreal","more real than real","gerçekten daha gerçek",0,6],["Map before Territory","model comes first","model önce gelir",0,6],["Deterrence","theme park, exception","tema parkı, istisna",0,12],["Implosion","polls, meaning neutralized","anket, anlam söner",0,13]]},
+ {who:"Baudrillard · imgenin evreleri",i:[["Sacrament","reflects reality","gerçeği yansıtır",1,9],["Malefice","masks reality","gerçeği maskeler",1,9],["Sorcery","masks absence","yokluğu maskeler",1,9],["Pure Simulacrum","no relation","hiç ilişkisi yok",1,9]]},
+ {who:"Baudrillard · simulakr düzenleri",i:[["Counterfeit","copy, imitation","taklit",1,11],["Production","series, machines","seri üretim",1,11],["Simulation (order)","model, code","model, kod",1,11]]},
+ {who:"Marie-Laure Ryan",i:[["Immersion","being in a world","dünyada olmak",1,16],["Interactivity","acting, changing","eylem, değiştirmek",1,16],["Recentering","relocation","yer değiştirme",0,17],["Spatial Immersion","place","mekân",1,18],["Temporal Immersion","suspense","merak",1,18],["Emotional Immersion","attachment","bağlanma",1,18],["Danger Zone","internal + story","içeriden + hikâye",0,22]]},
+ {who:"Diğerleri",i:[["Eco","specific places, bounded","belirli yerler",0,15],["Bergson / Deleuze","potential, acorn","potansiyel, palamut",0,4],["Borges","map and territory","harita ve toprak",0,6]]}
+]
+};
+</script>
+<script>
 (function(){
 "use strict";
 /* ---------- helpers ---------- */
@@ -15419,7 +15483,7 @@ const LV={easy:"Kolay",medium:"Orta",hard:"Zor"};
 Object.keys(SIM).forEach(l=>SIM[l].forEach((q,i)=>{q.a=0;q.id="s"+l+i;QS[q.id]=q}));
 
 /* ---------- ui state (nothing is stored between visits) ---------- */
-const ui={gm:null,week:1,nq:"",jump:null,cw:null,pw:1,pm:"match",m:null,tf:null,g:null,t:null,tw:1,gq:"",tipw:1,ezw:1};
+const ui={gm:null,week:1,nq:"",jump:null,cw:null,pw:1,pm:"match",m:null,tf:null,g:null,t:null,tw:1,gq:"",tipw:1,ezw:1,tkw:1};
 
 /* ---------- shared bits ---------- */
 function weekChips(cur,act){
@@ -15935,9 +15999,39 @@ const GA={
     render()}
 };
 
+/* ---------- soru taktiği ---------- */
+const TKX=[
+ {h:"Sadece düşünür + şıklar yeter",q:"<mark>Jay David Bolter and Richard Grusin</mark> describe a desire for seamless, unmediated experiences. The drive to erase the interface entirely so the user forgets the technology is known as:",o:["<b>Immediacy</b>","Complexity","Virtuality","Resiliency"],x:"Şıklardan sadece biri Bolter & Grusin'in kelimesi: Immediacy. Uzun cümleyi okumana gerek kalmadı."},
+ {h:"İki tanıdık şık kalırsa: tek ipucu kelime",q:"<mark>Harold Innis</mark> contrasts different physical substrates. Heavy materials like clay tablets enforce temporal continuity, whereas <mark>light</mark> materials like papyrus strictly facilitate the control of:",o:["History","Culture","<b>Space</b>","Class"],x:"Innis'in iki kelimesi var: Time ve Space. İpucu kelime “light” (hafif): hafif olan uzağa taşınır, yani mekân."},
+ {h:"Kökte zaten geçen terimi seçme",q:"<mark>Lev Manovich</mark>… the massive stored database of choices represents the material paradigm, while the specific, fleeting <mark>user path</mark> generated on screen forms a virtual:",o:["Sequence","Database","<b>Syntagm</b>","Paradigm"],x:"Paradigm kökte zaten kullanılmış; soru “diğerini” istiyor. Kullanıcının yolu = Syntagm."},
+ {h:"Cümle yarım biterse: terimi tamamla",q:"<mark>Manuel Castells</mark>… capital is disarticulated from local human meaning, generating an <mark>elite</mark>, hyper-connected spatial layer known as the space of:",o:["<b>Flows</b>","Places","Nodes","Hubs"],x:"“space of ___” iki kelimelik bir terim: Flows ya da Places. İpucu “elite” → Flows. (Places yerel olandır.)"}
+];
+function vTactic(){
+  const d=TD[ui.tkw];
+  return `<div class="stack"><h1>Soru taktiği</h1><p class="lead">Sınav soruları uzun ve ağır İngilizce olabilir, ama çoğu aynı şeyi sorar: <b>bu düşünürün kavramı hangisi?</b> Cümlenin tamamını anlaman gerekmez.</p></div>
+  <h2 class="ez-h"><span class="ez-dot ez-d"></span>Yöntem: 3 adım</h2>
+  <div class="tk-steps">
+    <div class="tk-step"><span class="tk-n">1</span><div><b>Düşünürün adını gör.</b><p>İlk cümle çoğunlukla süstür; ondan sadece ismi al.</p></div></div>
+    <div class="tk-step"><span class="tk-n">2</span><div><b>Şıklarda o düşünürün kelimesini bul.</b><p>Genelde şıklardan sadece biri ona aittir. Uydurma ya da hiç görmediğin kelimeleri hemen ele.</p></div></div>
+    <div class="tk-step"><span class="tk-n">3</span><div><b>İki tanıdık şık kalırsa, son cümlede tek bir ipucu kelime ara.</b><p>Aşağıdaki sözlükte ⚠️ işaretli kavramlar bu tuzak ikilileridir.</p></div></div>
+  </div>
+  <div class="panel tk-tips"><p class="lbl">Kökün sonuna bak</p>
+    <p>“<i>is called / termed / known as / defined as</i>” ile bitiyorsa → bir <b>terim</b> istiyor.</p>
+    <p>Cümle yarım bitiyorsa (“<i>space of:</i>”, “<i>network:</i>”, “<i>collective:</i>”) → iki kelimelik bir terimin <b>ikinci kelimesini</b> istiyor.</p>
+    <p>Kökte zaten geçen bir terim şıklarda da varsa, genelde cevap o değil, <b>diğeridir</b>.</p></div>
+  <h2 class="ez-h"><span class="ez-dot ez-k"></span>Örnekler</h2>
+  <div class="tk-ex">${TKX.map((e,i)=>`<article class="fm"><p class="lbl">Örnek ${i+1} · ${e.h}</p><p class="tk-q">${e.q}</p>
+    <ol class="tk-o" type="A">${e.o.map(o=>`<li>${o}</li>`).join("")}</ol><p class="tk-x">💡 ${e.x}</p></article>`).join("")}</div>
+  <h2 class="ez-h" id="tk-dict"><span class="ez-dot ez-s"></span>Hızlı sözlük</h2>
+  <p class="muted" style="font-size:.88rem;margin-top:-6px">Kavram → kökte görebileceğin ipucu kelime. ⚠️ = karışabilecek tuzak ikilisi.</p>
+  ${weekChips(ui.tkw,"tkw")}
+  <div class="tk-dict">${d.map(g=>`<section class="tk-g"><h3>${g.who}</h3><ul>${g.i.map(([t,c,tr,pair,p])=>`<li><span class="tk-t">${pair?"⚠️ ":""}${t}</span>${c?`<span class="tk-c">→ <b>${c}</b> <small>${tr}</small></span>`:""}</li>`).join("")}</ul></section>`).join("")}</div>
+  ${ui.tkw<W.length?`<div class="row"><button class="btn" data-act="tkw" data-v="${ui.tkw+1}">${wl(ui.tkw+1)} →</button></div>`:""}`;
+}
+
 /* ---------- router ---------- */
-const VIEWS={home:vHome,cards:vCards,notes:vNotes,practice:vPractice,tips:vTips,test:vTest,people:vPeople,glossary:vGlossary,game:vGame};
-const NAV=[["home","Ana sayfa"],["cards","Kartlar"],["notes","Notlar"],["practice","Alıştırma"],["tips","Sınav tüyoları"],["test","Test"],["game","Oyun"],["people","Kim kimdir"],["glossary","Sözlük"]];
+const VIEWS={home:vHome,cards:vCards,notes:vNotes,practice:vPractice,tips:vTips,test:vTest,people:vPeople,glossary:vGlossary,game:vGame,tactic:vTactic};
+const NAV=[["home","Ana sayfa"],["cards","Kartlar"],["notes","Notlar"],["practice","Alıştırma"],["tips","Sınav tüyoları"],["test","Test"],["tactic","Soru taktiği"],["game","Oyun"],["people","Kim kimdir"],["glossary","Sözlük"]];
 let cur="home";
 function renderNav(){$("#rail").innerHTML=NAV.map(([k,l])=>`<a href="#${k}" ${cur===k?'aria-current="page"':""}>${l}</a>`).join("")}
 function render(){
@@ -15993,6 +16087,7 @@ const A={
   gquit:()=>{ui.g=null;render()},
   gogr:t=>{ui.pm="gr";go("practice",t.dataset.v)},
   tipw:t=>{ui.tipw=+t.dataset.v;render();window.scrollTo(0,0)},
+  tkw:t=>{ui.tkw=+t.dataset.v;render();const el=document.getElementById("tk-dict");if(el)el.scrollIntoView({block:"start"})},
   tweek:t=>{ui.tw=+t.dataset.v;render()},
   tstart:(el)=>{const n=el.dataset.v==="2"?2:1,w=W[ui.tw-1];newTest("week",shuffle(n===2?w.mcq2:w.mcq).map(q=>q.id));ui.t.set=n;render()},
   ttr:()=>{ui.t.tr=!ui.t.tr;render()},
